@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "backpacks",
+    "pattern": [
+        "M#M",
+        "#C#",
+        "M#M"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:leather"
+        },
+        "C": {
+            "item": "minecraft:chest"
+        },
+        "M": {
+            "item": "minecraft:gold_ingot"
+        }
+    },
+    "result": {
+        "item": "backpackmod:gold_backpack"
+    }
+}

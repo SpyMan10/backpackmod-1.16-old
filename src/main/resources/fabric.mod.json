@@ -1,0 +1,33 @@
+ {
+    "schemaVersion": 1,
+    "id": "backpackmod",
+    "version": "${version}",
+    "name": "Backpack Mod",
+    "description": "Very very veryyyy useful backpacks",
+    "authors": [
+        "SpyMan"
+    ],
+    "contact": {
+        "email": "spyman1536@gmail.com"
+    },
+    "license": "",
+    "icon": "assets/backpackmod/icon.png",
+    "environment": "*",
+    "entrypoints": {
+        "main": [
+            "net.spyman.backpackmod.common.BackpackMod"
+        ],
+        "client": [
+            "net.spyman.backpackmod.client.BackpackModClient"
+        ]
+    },
+    "mixins": [],
+    "depends": {
+        "fabricloader": ">=0.7.4",
+        "fabric": "*",
+        "minecraft": "1.16.2"
+    },
+    "suggests": {
+        "flamingo": "*"
+    }
+}
