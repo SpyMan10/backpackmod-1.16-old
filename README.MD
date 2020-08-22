@@ -13,3 +13,7 @@ This mod require Fabric Loader and Fabric API to work (https://fabricmc.net/)
 ### Other
 
 - Ender backpack (Ender chest inventory)
+
+### Recipes
+
+![ ](./backpacksrecipes.png)
