@@ -8,7 +8,9 @@
         "SpyMan"
     ],
     "contact": {
-        "email": "spyman1536@gmail.com"
+        "email": "spyman1536@gmail.com",
+        "sources": "https://github.com/SpyMan10/backpackmod",
+        "issues": "https://github.com/SpyMan10/backpackmod/issues"
     },
     "license": "MIT",
     "icon": "assets/backpackmod/icon.png",
