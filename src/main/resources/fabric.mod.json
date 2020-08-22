@@ -10,7 +10,7 @@
     "contact": {
         "email": "spyman1536@gmail.com"
     },
-    "license": "",
+    "license": "MIT",
     "icon": "assets/backpackmod/icon.png",
     "environment": "*",
     "entrypoints": {
