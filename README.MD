@@ -20,4 +20,4 @@ This mod require Fabric Loader and Fabric API to work (https://fabricmc.net/)
 
 ### Modpacks
 
-Yes you can include this mod in your own modpack
+Yes you can include this mod to your own modpack
