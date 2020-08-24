@@ -16,7 +16,7 @@ This mod require Fabric Loader and Fabric API to work (https://fabricmc.net/)
 
 ### Recipes
 
-![ ](./backpacksrecipes.png)
+![](https://i.imgur.com/j2773al.png)
 
 ### Modpacks
 
