@@ -28,7 +28,7 @@ cd ./backpackmod/
 gradlew build
 ```
 
-You can get generated jar files in ./build/libs/
+You can get generated jar files in `./build/libs/`
 
 ### Modpacks
 
