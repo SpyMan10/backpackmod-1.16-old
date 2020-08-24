@@ -2,6 +2,8 @@ Add backpacks to Minecraft 1.16.2
 
 This mod require Fabric Loader and Fabric API to work (https://fabricmc.net/)
 
+https://www.curseforge.com/minecraft/mc-mods/backpackmod
+
 ### Tiers
 
 - Leather Backpack (18 slots)
