@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 Add backpacks to Minecraft 1.16.2
 
 This mod require Fabric Loader and Fabric API to work (https://fabricmc.net/)
