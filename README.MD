@@ -20,6 +20,16 @@ https://www.curseforge.com/minecraft/mc-mods/backpackmod
 
 ![](https://i.imgur.com/j2773al.png)
 
+### How to build
+
+```
+git clone http://github.com/SpyMan10/backpackmod
+cd ./backpackmod/
+gradlew build
+```
+
+You can get generated jar files in ./build/libs/
+
 ### Modpacks
 
 Yes you can include this mod in your own modpack
