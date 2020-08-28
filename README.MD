@@ -10,7 +10,7 @@ https://www.curseforge.com/minecraft/mc-mods/backpackmod
 - Iron Backpack (36 slots)
 - Gold Backpack (54 slots)
 - Diamond Backpack (77 slots)
-- Netherite Backpack (117 slots)
+- Netherite Backpack (117 slots, fireproof)
 
 ### Other
 
@@ -18,7 +18,7 @@ https://www.curseforge.com/minecraft/mc-mods/backpackmod
 
 ### Recipes
 
-![](https://i.imgur.com/j2773al.png)
+![](https://i.imgur.com/9dIGj6S.png)
 
 ### How to build
 
