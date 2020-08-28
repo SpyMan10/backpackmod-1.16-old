@@ -136,7 +136,7 @@ public class BackpackUpgradeRecipe extends SpecialCraftingRecipe {
     public static final class NetheriteUpgrade extends BackpackUpgradeRecipe {
 
         public NetheriteUpgrade(Identifier id) {
-            super(id, BackpackRecipes.IRON_UPGRADE, () -> Items.NETHERITE_SCRAP, () -> BackpackItems.DIAMOND_BACKPACK, () -> BackpackItems.NETHERITE_BACKPACK);
+            super(id, BackpackRecipes.NETHERITE_UPGRADE, () -> Items.NETHERITE_SCRAP, () -> BackpackItems.DIAMOND_BACKPACK, () -> BackpackItems.NETHERITE_BACKPACK);
         }
     }
 }
