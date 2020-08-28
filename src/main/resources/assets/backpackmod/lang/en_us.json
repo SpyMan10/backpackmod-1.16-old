@@ -14,6 +14,8 @@
     "backpackmod.screen.title.rename": "Rename Backpack",
     "backpackmod.screen.button.default.name": "Reset name",
     "backpackmod.screen.button.rename": "Rename",
-    "backpackmod.screen.rename.max.char": "Backpack name cannot exceed 64 chars",
-    "backpackmod.tooltip.how.to.rename": "Sneak + Right click to rename"
+    "backpackmod.screen.rename.max.length": "Max length : %s",
+    "backpackmod.tooltip.how.to.rename": "Sneak + Right click to rename",
+
+    "backpackmod.screen.button.close": "Close"
 }

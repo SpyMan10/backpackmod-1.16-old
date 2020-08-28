@@ -65,7 +65,7 @@ public class BackpackItem extends Item {
                 user.playSound(SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 1.0F, 1.0F);
             }
 
-            return TypedActionResult.consume(user.getStackInHand(hand));
+            return TypedActionResult.consume(stack);
         } else if (world.isClient()) {
             openRenameScreen(hand, stack.getName());
             return TypedActionResult.pass(stack);

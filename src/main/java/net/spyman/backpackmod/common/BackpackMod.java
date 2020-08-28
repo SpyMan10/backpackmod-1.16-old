@@ -35,7 +35,7 @@ public final class BackpackMod implements ModInitializer {
                 if (def) {
                     stack.removeCustomName();
                 } else {
-                    final String name = buf.readString(64);
+                    final String name = buf.readString(32);
                     stack.setCustomName(new LiteralText(name));
                 }
             }

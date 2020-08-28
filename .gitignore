@@ -5,8 +5,6 @@ build/
 out/
 classes/
 
-logs
-
 # eclipse
 
 *.launch
@@ -29,3 +27,5 @@ bin/
 # fabric
 
 run/
+
+logs
