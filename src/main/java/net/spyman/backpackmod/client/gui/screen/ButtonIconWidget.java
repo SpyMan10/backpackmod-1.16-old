@@ -7,7 +7,6 @@ import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.math.MathHelper;
 
 public class ButtonIconWidget extends ButtonWidget {
 
@@ -38,7 +37,7 @@ public class ButtonIconWidget extends ButtonWidget {
         this.drawTexture(matrices, this.x + this.width / 2, this.y, 200 - this.width / 2, 46 + i * 20, this.width / 2, this.height);
         this.renderBg(matrices, client, mouseX, mouseY);
 
-        client.getInstance().getTextureManager().bindTexture(this.icon);
+        MinecraftClient.getInstance().getTextureManager().bindTexture(this.icon);
         this.drawTexture(matrices, this.x + 2, this.y + 2, this.ix, this.iy, 16, 16);
 
         if (mouseX >= this.x && mouseX < this.x + this.width && mouseY >= this.y && mouseY < this.y + this.height) {

@@ -1,3 +1,21 @@
 {
-    "type": "backpackmod:iron_upgrade"
+    "type": "backpackmod:shaped_copy_nbt",
+    "group": "backpackmod",
+    "pattern": [
+        " # ",
+        "#C#",
+        " # "
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:iron_ingot"
+        },
+        "C": {
+            "item": "backpackmod:leather_backpack"
+        }
+    },
+    "result": {
+        "item": "backpackmod:iron_backpack"
+    },
+    "target_slot": 4
 }

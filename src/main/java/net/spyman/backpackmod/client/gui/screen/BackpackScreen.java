@@ -1,12 +1,10 @@
 package net.spyman.backpackmod.client.gui.screen;
 
-import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.math.Matrix4f;
 import net.spyman.backpackmod.common.inventory.BackpackScreenHandler;
 
 public class BackpackScreen extends HandledScreen<BackpackScreenHandler> {
@@ -22,11 +20,9 @@ public class BackpackScreen extends HandledScreen<BackpackScreenHandler> {
 
     @Override
     public void drawBackground(MatrixStack matrices, float delta, int mouseX, int mouseY) {
-        MinecraftClient.getInstance().getTextureManager().bindTexture(GENERIC_54);
+        this.client.getTextureManager().bindTexture(GENERIC_54);
         matrices.push();
         matrices.translate(this.x, this.y, 0.0D);
-
-        final Matrix4f mat4f = matrices.peek().getModel();
 
         // Background storage texture pseudo-generation
 

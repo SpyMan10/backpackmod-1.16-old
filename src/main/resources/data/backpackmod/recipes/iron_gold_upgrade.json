@@ -1,3 +1,21 @@
 {
-    "type": "backpackmod:gold_upgrade"
+    "type": "backpackmod:shaped_copy_nbt",
+    "group": "backpackmod",
+    "pattern": [
+        " # ",
+        "#C#",
+        " # "
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:gold_ingot"
+        },
+        "C": {
+            "item": "backpackmod:iron_backpack"
+        }
+    },
+    "result": {
+        "item": "backpackmod:gold_backpack"
+    },
+    "target_slot": 4
 }

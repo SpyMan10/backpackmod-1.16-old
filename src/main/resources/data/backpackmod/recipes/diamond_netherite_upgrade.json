@@ -1,3 +1,21 @@
 {
-    "type": "backpackmod:netherite_upgrade"
+    "type": "backpackmod:shaped_copy_nbt",
+    "group": "backpackmod",
+    "pattern": [
+        " # ",
+        "#C#",
+        " # "
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:netherite_scrap"
+        },
+        "C": {
+            "item": "backpackmod:diamond_backpack"
+        }
+    },
+    "result": {
+        "item": "backpackmod:netherite_backpack"
+    },
+    "target_slot": 4
 }

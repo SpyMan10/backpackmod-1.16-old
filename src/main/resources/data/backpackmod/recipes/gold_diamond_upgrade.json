@@ -1,3 +1,21 @@
 {
-    "type": "backpackmod:diamond_upgrade"
+    "type": "backpackmod:shaped_copy_nbt",
+    "group": "backpackmod",
+    "pattern": [
+        " # ",
+        "#C#",
+        " # "
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:diamond"
+        },
+        "C": {
+            "item": "backpackmod:gold_backpack"
+        }
+    },
+    "result": {
+        "item": "backpackmod:diamond_backpack"
+    },
+    "target_slot": 4
 }
