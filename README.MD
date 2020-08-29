@@ -4,7 +4,9 @@ This mod require Fabric Loader and Fabric API to work (https://fabricmc.net/)
 
 https://www.curseforge.com/minecraft/mc-mods/backpackmod
 
-### Tiers
+### Items
+
+##### Tiers
 
 - Leather Backpack (18 slots)
 - Iron Backpack (36 slots)
@@ -12,13 +14,9 @@ https://www.curseforge.com/minecraft/mc-mods/backpackmod
 - Diamond Backpack (77 slots)
 - Netherite Backpack (117 slots, fireproof)
 
-### Other
+##### Other
 
 - Ender backpack (Ender chest inventory)
-
-### Recipes
-
-![](https://i.imgur.com/9dIGj6S.png)
 
 ### How to build
 
