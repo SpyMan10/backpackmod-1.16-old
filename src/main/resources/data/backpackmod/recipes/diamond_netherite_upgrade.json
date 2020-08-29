@@ -2,16 +2,19 @@
     "type": "backpackmod:shaped_copy_nbt",
     "group": "backpackmod",
     "pattern": [
-        " # ",
-        "#C#",
-        " # "
+        "###",
+        "CBC",
+        "###"
     ],
     "key": {
         "#": {
             "item": "minecraft:netherite_scrap"
         },
-        "C": {
+        "B": {
             "item": "backpackmod:diamond_backpack"
+        },
+        "C": {
+            "item": "minecraft:chest"
         }
     },
     "result": {

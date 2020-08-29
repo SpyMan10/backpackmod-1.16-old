@@ -2,16 +2,19 @@
     "type": "backpackmod:shaped_copy_nbt",
     "group": "backpackmod",
     "pattern": [
-        " # ",
-        "#C#",
-        " # "
+        "###",
+        "CBC",
+        "###"
     ],
     "key": {
         "#": {
             "item": "minecraft:iron_ingot"
         },
-        "C": {
+        "B": {
             "item": "backpackmod:leather_backpack"
+        },
+        "C": {
+            "item": "minecraft:chest"
         }
     },
     "result": {
