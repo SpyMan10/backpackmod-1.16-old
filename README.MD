@@ -1,8 +1,10 @@
-Add backpacks to Minecraft 1.16.2
+##### Add backpacks to Minecraft 1.16.2
 
-This mod require Fabric Loader and Fabric API to work (https://fabricmc.net/)
+This mod require [Fabric Loader and Fabric API](https://fabricmc.net/) to work
 
-https://www.curseforge.com/minecraft/mc-mods/backpackmod
+### How to get the mod
+
+[You can download the mod here](https://www.curseforge.com/minecraft/mc-mods/backpackmod)
 
 ### Items
 
