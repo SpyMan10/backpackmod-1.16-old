@@ -33,3 +33,8 @@ You can get generated jar files in `./build/libs/`
 ### Modpacks
 
 Yes you can include this mod in your own modpack
+
+### Contributors
+
+- Translations :
+    - kazmurenko (ru_ru)
