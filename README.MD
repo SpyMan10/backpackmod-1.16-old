@@ -38,3 +38,4 @@ Yes you can include this mod in your own modpack
 
 - Translations :
     - kazmurenko (ru_ru)
+    - linzexin022 (zh_cn)
