@@ -1,0 +1,21 @@
+{
+    "itemGroup.backpackmod.group": "Backpack Mod",
+
+    "item.backpackmod.leather_backpack": "Sac à dos en Cuire",
+    "item.backpackmod.iron_backpack": "Sac à dos en Fer",
+    "item.backpackmod.gold_backpack": "Sac à dos en Or",
+    "item.backpackmod.diamond_backpack": "Sac à dos en Diamant",
+    "item.backpackmod.netherite_backpack": "Sac à dos en Netherite",
+
+    "item.backpackmod.ender_backpack": "Sac a dos du Néant",
+
+    "backpackmod.tooltip.size": "Taille: %sx%s (%s) emplacement",
+
+    "backpackmod.screen.title.rename": "Renommer",
+    "backpackmod.screen.button.default.name": "Nom par défaut",
+    "backpackmod.screen.button.rename": "Renommer",
+    "backpackmod.screen.rename.max.length": "Nombre de caractère maximum : %s",
+    "backpackmod.tooltip.how.to.rename": "Sneak + Clic droit pour renommer le sac à dos",
+
+    "backpackmod.screen.button.close": "Fermer"
+}
