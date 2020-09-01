@@ -9,7 +9,7 @@
 
     "item.backpackmod.ender_backpack": "Sac a dos du Néant",
 
-    "backpackmod.tooltip.size": "Taille: %sx%s (%s) emplacement",
+    "backpackmod.tooltip.size": "Taille: %sx%s (%s) emplacement(s)",
 
     "backpackmod.screen.title.rename": "Renommer",
     "backpackmod.screen.button.default.name": "Nom par défaut",
