@@ -1,0 +1,21 @@
+{
+    "itemGroup.backpackmod.group": "背包模组",
+
+    "item.backpackmod.leather_backpack": "皮革背包",
+    "item.backpackmod.iron_backpack": "铁皮背包",
+    "item.backpackmod.gold_backpack": "镀金背包",
+    "item.backpackmod.diamond_backpack": "镶钻背包",
+    "item.backpackmod.netherite_backpack": "下届合金背包",
+
+    "item.backpackmod.ender_backpack": "末影背包",
+
+    "backpackmod.tooltip.size": "大小： %sx%s (%s)格",
+
+    "backpackmod.screen.title.rename": "重命名背包",
+    "backpackmod.screen.button.default.name": "重置名称",
+    "backpackmod.screen.button.rename": "重命名",
+    "backpackmod.screen.rename.max.length": "最大长度： %s",
+    "backpackmod.tooltip.how.to.rename": "下蹲 + 右键来重命名背包",
+
+    "backpackmod.screen.button.close": "关闭"
+}
