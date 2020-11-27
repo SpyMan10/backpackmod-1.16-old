@@ -41,6 +41,7 @@ public class BackpackItem extends Item {
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         final ItemStack stack = user.getStackInHand(hand);
+
         if (!user.isSneaking()) {
             if (!world.isClient()) {
                 user.openHandledScreen(new ExtendedScreenHandlerFactory() {

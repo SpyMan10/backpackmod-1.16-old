@@ -1,6 +1,9 @@
 package net.spyman.backpackmod.common.inventory;
 
+import net.minecraft.block.Blocks;
+import net.minecraft.block.ShulkerBoxBlock;
 import net.minecraft.inventory.Inventory;
+import net.minecraft.item.BlockItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.screen.slot.Slot;
 import net.spyman.backpackmod.common.item.BackpackItem;
@@ -13,6 +16,18 @@ public class BackpackSlot extends Slot {
 
     @Override
     public boolean canInsert(ItemStack stack) {
-        return !(stack.getItem() instanceof BackpackItem);
+        if (stack.getItem() instanceof BackpackItem) {
+            return false;
+        }
+
+        if (stack.getItem() instanceof BlockItem) {
+            final BlockItem itemb = (BlockItem) stack.getItem();
+
+            if (itemb.getBlock() instanceof ShulkerBoxBlock) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }

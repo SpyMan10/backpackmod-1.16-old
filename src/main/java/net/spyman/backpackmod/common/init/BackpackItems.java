@@ -12,6 +12,7 @@ import static net.spyman.backpackmod.common.BackpackMod.identify;
 public final class BackpackItems {
 
     public static final Item LEATHER_BACKPACK = new BackpackItem(9, 2, new Item.Settings().group(GROUP).rarity(Rarity.COMMON));
+    // Copper backpack 9 * 3
     public static final Item IRON_BACKPACK = new BackpackItem(9, 4, new Item.Settings().group(GROUP).rarity(Rarity.COMMON));
     public static final Item GOLD_BACKPACK = new BackpackItem(9, 6, new Item.Settings().group(GROUP).rarity(Rarity.UNCOMMON));
     public static final Item DIAMOND_BACKPACK = new BackpackItem(11, 7, new Item.Settings().group(GROUP).rarity(Rarity.RARE));
