@@ -10,27 +10,27 @@ This mod require [Fabric Loader](https://fabricmc.net/) and [Fabric API](https:/
 
 - Leather Backpack (18 slots)
 
-![](./imgs/leather_recipe.png)
+![](https://raw.githubusercontent.com/SpyMan10/backpackmod/master/imgs/leather_recipe.png)
 
 - Iron Backpack (36 slots)
 
-![](./imgs/iron_recipe.png)
+![](https://raw.githubusercontent.com/SpyMan10/backpackmod/master/imgs/iron_recipe.png)
 
 - Gold Backpack (54 slots)
 
-![](./imgs/gold_recipe.png)
+![](https://raw.githubusercontent.com/SpyMan10/backpackmod/master/imgs/gold_recipe.png)
 
 - Diamond Backpack (77 slots)
 
-![](./imgs/diamond_recipe.png)
+![](https://raw.githubusercontent.com/SpyMan10/backpackmod/master/imgs/diamond_recipe.png)
 
 - Netherite Backpack (117 slots, fireproof)
 
-![](./imgs/netherite_recipe.png)
+![](https://raw.githubusercontent.com/SpyMan10/backpackmod/master/imgs/netherite_recipe.png)
 
 - Ender backpack (Ender chest inventory)
 
-![](./imgs/ender_recipe.png)
+![](https://raw.githubusercontent.com/SpyMan10/backpackmod/master/imgs/ender_recipe.png)
 
 ## How to build
 
