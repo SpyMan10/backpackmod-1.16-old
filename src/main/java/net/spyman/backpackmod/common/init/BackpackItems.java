@@ -14,6 +14,7 @@ public final class BackpackItems {
     public static final Item LEATHER_BACKPACK = new BackpackItem(9, 2, new Item.Settings().group(GROUP).rarity(Rarity.COMMON));
     // Copper backpack 9 * 3
     public static final Item IRON_BACKPACK = new BackpackItem(9, 4, new Item.Settings().group(GROUP).rarity(Rarity.COMMON));
+    // Amethyst backpack 9 * 5
     public static final Item GOLD_BACKPACK = new BackpackItem(9, 6, new Item.Settings().group(GROUP).rarity(Rarity.UNCOMMON));
     public static final Item DIAMOND_BACKPACK = new BackpackItem(11, 7, new Item.Settings().group(GROUP).rarity(Rarity.RARE));
     public static final Item NETHERITE_BACKPACK = new BackpackItem(13, 9, new Item.Settings().group(GROUP).rarity(Rarity.EPIC).fireproof());

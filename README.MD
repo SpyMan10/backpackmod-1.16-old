@@ -1,40 +1,52 @@
-##### Add backpacks to Minecraft 1.16+
+# Add backpacks to Minecraft 1.16+
 
 This mod require [Fabric Loader](https://fabricmc.net/) and [Fabric API](https://www.curseforge.com/minecraft/mc-mods/fabric-api) to work
 
-### How to get the mod
+## How to get the mod
 
-[You can download the mod here](https://www.curseforge.com/minecraft/mc-mods/backpackmod)
+[CurseForge download link](https://www.curseforge.com/minecraft/mc-mods/backpackmod)
 
-### Items
-
-##### Tiers
+## Items
 
 - Leather Backpack (18 slots)
+
+![](./imgs/leather_recipe.png)
+
 - Iron Backpack (36 slots)
+
+![](./imgs/iron_recipe.png)
+
 - Gold Backpack (54 slots)
+
+![](./imgs/gold_recipe.png)
+
 - Diamond Backpack (77 slots)
+
+![](./imgs/diamond_recipe.png)
+
 - Netherite Backpack (117 slots, fireproof)
 
-##### Other
+![](./imgs/netherite_recipe.png)
 
 - Ender backpack (Ender chest inventory)
 
-### How to build
+![](./imgs/ender_recipe.png)
+
+## How to build
 
 ```
 git clone http://github.com/SpyMan10/backpackmod
 cd ./backpackmod/
-gradlew build
+sh ./gradlew.sh build
 ```
 
 You can get generated jar files in `./build/libs/`
 
-### Modpacks
+## Modpacks
 
 Yes you can include this mod in your own modpack
 
-### Contributors
+## Contributors
 
 - Translations :
     - kazmurenko (ru_ru)

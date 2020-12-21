@@ -1,6 +1,5 @@
 package net.spyman.backpackmod.common.inventory;
 
-import net.minecraft.block.Blocks;
 import net.minecraft.block.ShulkerBoxBlock;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.BlockItem;
@@ -23,9 +22,7 @@ public class BackpackSlot extends Slot {
         if (stack.getItem() instanceof BlockItem) {
             final BlockItem itemb = (BlockItem) stack.getItem();
 
-            if (itemb.getBlock() instanceof ShulkerBoxBlock) {
-                return false;
-            }
+            return !(itemb.getBlock() instanceof ShulkerBoxBlock);
         }
 
         return true;

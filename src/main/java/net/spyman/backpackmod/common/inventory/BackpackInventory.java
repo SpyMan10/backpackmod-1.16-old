@@ -9,10 +9,12 @@ import net.minecraft.util.collection.DefaultedList;
 
 public class BackpackInventory implements Inventory {
 
+    // slots matrix size
     private final int width;
     private final int height;
 
     private final DefaultedList<ItemStack> list;
+    // Itemstack where nbt-data will be written
     private final ItemStack container;
 
     public BackpackInventory(int width, int height, ItemStack container) {

@@ -17,10 +17,6 @@ public class ShulkerBoxSlotMixin {
 
     @Inject(method = "canInsert", at = @At("TAIL"))
     public boolean canInsert(ItemStack stack, CallbackInfoReturnable<Boolean> info) {
-        if (stack.getItem() instanceof BackpackItem) {
-            return false;
-        }
-
-        return true;
+        return !(stack.getItem() instanceof BackpackItem);
     }
 }
