@@ -1,7 +1,7 @@
 package net.spyman.backpackmod.client.gui.screen;
 
 import io.netty.buffer.Unpooled;
-import net.fabricmc.fabric.api.network.ClientSidePacketRegistry;
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.TextFieldWidget;
@@ -81,7 +81,7 @@ public class BackpackRenameScreen extends Screen {
             buf.writeString(this.textField.getText().trim());
         }
 
-        ClientSidePacketRegistry.INSTANCE.sendToServer(BackpackMod.PACKET_RENAME_BACKPACK, buf);
+        ClientPlayNetworking.send(BackpackMod.PACKET_RENAME_BACKPACK, buf);
         this.onClose();
     }
 

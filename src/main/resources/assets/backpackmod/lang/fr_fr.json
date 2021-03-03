@@ -17,5 +17,8 @@
     "backpackmod.screen.rename.max.length": "Nombre de caractère maximum : %s",
     "backpackmod.tooltip.how.to.rename": "Sneak + Clic droit pour renommer le sac à dos",
 
-    "backpackmod.screen.button.close": "Fermer"
+    "backpackmod.screen.button.close": "Fermer",
+
+    "category.backpackmod.backpack": "BackpackMod",
+    "key.backpackmod.open": "Ouvrir le sac"
 }

@@ -1,5 +1,8 @@
 package net.spyman.backpackmod.common.item;
 
+import dev.emi.trinkets.api.SlotGroups;
+import dev.emi.trinkets.api.Slots;
+import dev.emi.trinkets.api.Trinket;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
@@ -27,7 +30,7 @@ import java.util.List;
 
 import static net.spyman.backpackmod.common.BackpackMod.translate;
 
-public class BackpackItem extends Item {
+public class BackpackItem extends Item implements Trinket {
 
     private final int width;
     private final int height;
@@ -44,24 +47,7 @@ public class BackpackItem extends Item {
 
         if (!user.isSneaking()) {
             if (!world.isClient()) {
-                user.openHandledScreen(new ExtendedScreenHandlerFactory() {
-                    @Override
-                    public Text getDisplayName() {
-                        return stack.getName();
-                    }
-
-                    @Override
-                    public ScreenHandler createMenu(int syncId, PlayerInventory inv, PlayerEntity player) {
-                        return new BackpackScreenHandler(inv, syncId, new BackpackInventory(width, height, stack));
-                    }
-
-                    @Override
-                    public void writeScreenOpeningData(ServerPlayerEntity serverPlayerEntity, PacketByteBuf buf) {
-                        buf.writeInt(BackpackItem.this.width);
-                        buf.writeInt(BackpackItem.this.height);
-                        buf.writeEnumConstant(hand);
-                    }
-                });
+                openScreen(user, stack);
             } else {
                 user.playSound(SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 1.0F, 1.0F);
             }
@@ -90,8 +76,35 @@ public class BackpackItem extends Item {
         return this.width * this.height;
     }
 
+    @Override
+    public boolean canWearInSlot(String group, String slot) {
+        return slot.equalsIgnoreCase(Slots.BACKPACK) && group.equalsIgnoreCase(SlotGroups.CHEST);
+    }
+
+    public static final void openScreen(PlayerEntity user, ItemStack stack) {
+        final BackpackItem bp = (BackpackItem) stack.getItem();
+
+        user.openHandledScreen(new ExtendedScreenHandlerFactory() {
+            @Override
+            public Text getDisplayName() {
+                return stack.getName();
+            }
+
+            @Override
+            public ScreenHandler createMenu(int syncId, PlayerInventory inv, PlayerEntity player) {
+                return new BackpackScreenHandler(inv, syncId, new BackpackInventory(bp.width, bp.height, stack));
+            }
+
+            @Override
+            public void writeScreenOpeningData(ServerPlayerEntity serverPlayerEntity, PacketByteBuf buf) {
+                buf.writeInt(bp.width);
+                buf.writeInt(bp.height);
+            }
+        });
+    }
+
     @Environment(EnvType.CLIENT)
-    private static final void openRenameScreen(Hand hand, Text name) {
+    public static final void openRenameScreen(Hand hand, Text name) {
         MinecraftClient.getInstance().openScreen(new BackpackRenameScreen(hand, name));
     }
 }
