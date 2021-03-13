@@ -8,7 +8,6 @@
         "SpyMan"
     ],
     "contact": {
-        "email": "spyman1536@gmail.com",
         "sources": "https://github.com/SpyMan10/backpackmod",
         "issues": "https://github.com/SpyMan10/backpackmod/issues"
     },
@@ -32,6 +31,6 @@
         "minecraft": "1.16.x"
     },
     "suggests": {
-        "flamingo": "*"
+
     }
 }

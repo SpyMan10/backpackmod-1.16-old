@@ -11,6 +11,8 @@ version = "${project.mod_mc_version}-${project.mod_version}"
 group = project.maven_group
 
 repositories {
+	maven { url "https://maven.shedaniel.me/" }
+	
 	maven {
 		name = "TerraformersMC"
 		url = "https://maven.terraformersmc.com/"
