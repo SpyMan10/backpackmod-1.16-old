@@ -1,8 +1,5 @@
 package net.spyman.backpackmod.common.item;
 
-import dev.emi.trinkets.api.SlotGroups;
-import dev.emi.trinkets.api.Slots;
-import dev.emi.trinkets.api.Trinket;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
@@ -30,7 +27,7 @@ import java.util.List;
 
 import static net.spyman.backpackmod.common.BackpackMod.translate;
 
-public class BackpackItem extends Item implements Trinket {
+public class BackpackItem extends Item {
 
     private final int width;
     private final int height;
@@ -74,11 +71,6 @@ public class BackpackItem extends Item implements Trinket {
      */
     public int size() {
         return this.width * this.height;
-    }
-
-    @Override
-    public boolean canWearInSlot(String group, String slot) {
-        return slot.equalsIgnoreCase(Slots.BACKPACK) && group.equalsIgnoreCase(SlotGroups.CHEST);
     }
 
     public static final void openScreen(PlayerEntity user, ItemStack stack) {

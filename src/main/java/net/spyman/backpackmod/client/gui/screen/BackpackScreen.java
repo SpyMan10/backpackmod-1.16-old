@@ -24,7 +24,7 @@ public class BackpackScreen extends HandledScreen<BackpackScreenHandler> {
         matrices.push();
         matrices.translate(this.x, this.y, 0.0D);
 
-        // Background storage texture pseudo-generation
+        // Background storage texture pseudo-generation //
 
         // Upper-left corner
         this.drawTexture(matrices, 0, 0, 0, 0, 7, 17);

@@ -14,7 +14,6 @@ public class ShulkerBoxSlotMixin {
     /**
      * Prevent for storing backpacks into shulkerbox
      */
-
     @Inject(method = "canInsert", at = @At("TAIL"))
     public boolean canInsert(ItemStack stack, CallbackInfoReturnable<Boolean> info) {
         return !(stack.getItem() instanceof BackpackItem);

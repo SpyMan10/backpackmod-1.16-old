@@ -35,7 +35,7 @@ public class ShapedRecipeCopyNBT extends ShapedRecipe {
     @Override
     public ItemStack craft(CraftingInventory matrix) {
         if (this.targetSlot < 0 || this.targetSlot >= matrix.size()) {
-            throw new IllegalArgumentException("ShapedRecipeCopyNBT: wrong value for 'target_slot' key, specify the slot the itemstack to copy NBT is");
+            throw new IllegalArgumentException("ShapedRecipeCopyNBT: Wrong value for 'target_slot' key, specify the slot where is the itemstack source top copy NBT-Data.");
         }
 
         final ItemStack stack = matrix.getStack(targetSlot);
