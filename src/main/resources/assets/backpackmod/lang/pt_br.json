@@ -1,0 +1,24 @@
+{
+    "itemGroup.backpackmod.group": "Backpack Mod",
+
+    "item.backpackmod.leather_backpack": "Mochila de Couro",
+    "item.backpackmod.iron_backpack": "Mochila de Ferro",
+    "item.backpackmod.gold_backpack": "Mochila de Ouro",
+    "item.backpackmod.diamond_backpack": "Mochila de Diamante",
+    "item.backpackmod.netherite_backpack": "Mochila de Netherita",
+
+    "item.backpackmod.ender_backpack": "Mochila de Ender",
+
+    "backpackmod.tooltip.size": "Tamanho: %sx%s (%s) slots",
+
+    "backpackmod.screen.title.rename": "Renomear Mochila",
+    "backpackmod.screen.button.default.name": "Resetar Nome",
+    "backpackmod.screen.button.rename": "Renomear",
+    "backpackmod.screen.rename.max.length": "Tamanho Máximo : %s",
+    "backpackmod.tooltip.how.to.rename": "Agache + Clique direito para renomear",
+
+    "backpackmod.screen.button.close": "Fechar",
+
+    "category.backpackmod.backpack": "BackpackMod",
+    "key.backpackmod.open": "Abrir Mochila"
+}
