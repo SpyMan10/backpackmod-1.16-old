@@ -1,0 +1,24 @@
+{
+    "type": "backpackmod:shaped_copy_nbt",
+    "group": "backpackmod",
+    "pattern": [
+        "###",
+        "CBC",
+        "###"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:gold_ingot"
+        },
+        "B": {
+            "item": "backpackmod:amethyst_backpack"
+        },
+        "C": {
+            "item": "minecraft:chest"
+        }
+    },
+    "result": {
+        "item": "backpackmod:gold_backpack"
+    },
+    "target_slot": 4
+}
