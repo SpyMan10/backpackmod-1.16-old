@@ -1,6 +1,8 @@
 package net.spyman.backpackmod.client.gui.screen;
 
+import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
+import net.minecraft.client.render.GameRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.text.Text;
@@ -20,7 +22,9 @@ public class BackpackScreen extends HandledScreen<BackpackScreenHandler> {
 
     @Override
     public void drawBackground(MatrixStack matrices, float delta, int mouseX, int mouseY) {
-        this.client.getTextureManager().bindTexture(GENERIC_54);
+        RenderSystem.setShader(GameRenderer::getPositionTexShader);
+        RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+        RenderSystem.setShaderTexture(0, GENERIC_54);
         matrices.push();
         matrices.translate(this.x, this.y, 0.0D);
 

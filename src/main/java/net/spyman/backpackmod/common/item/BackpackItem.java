@@ -60,17 +60,8 @@ public class BackpackItem extends Item {
 
     @Override
     public void appendTooltip(ItemStack stack, World world, List<Text> tooltip, TooltipContext context) {
-        tooltip.add(translate("tooltip.size", this.width, this.height, this.size()).formatted(Formatting.GRAY));
-        tooltip.add(translate("tooltip.how.to.rename").formatted(Formatting.GRAY));
-    }
-
-    /**
-     * Return backpack inventory size
-     *
-     * @return Inventory size (number of slots)
-     */
-    public int size() {
-        return this.width * this.height;
+        tooltip.add(translate("tooltip.size", this.width, this.height, this.width * this.height).formatted(Formatting.GRAY));
+        tooltip.add(translate("tooltip.how.to.rename").formatted(Formatting.ITALIC, Formatting.GRAY));
     }
 
     public static final void openScreen(PlayerEntity user, ItemStack stack) {

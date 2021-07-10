@@ -1,53 +1,67 @@
-# Add backpacks to Minecraft 1.16+
+# Description
 
-This mod require [Fabric Loader](https://fabricmc.net/) and [Fabric API](https://www.curseforge.com/minecraft/mc-mods/fabric-api) to work
+This mod add somes new backpack items to the popular [Minecraft](http://minecraft.net) game,
 
-## How to get the mod
+the mod require [Fabric Loader](https://fabricmc.net/) and [Fabric API](https://www.curseforge.com/minecraft/mc-mods/fabric-api) to work
 
-[CurseForge download link](https://www.curseforge.com/minecraft/mc-mods/backpackmod)
+# How to get the mod
 
-## Items
+**[CurseForge download link](https://www.curseforge.com/minecraft/mc-mods/backpackmod)**
+
+# Items
 
 - Leather Backpack (18 slots)
 
-![](https://raw.githubusercontent.com/SpyMan10/backpackmod/master/imgs/leather_recipe.png)
+    ![](https://raw.githubusercontent.com/SpyMan10/backpackmod/master/imgs/leather_recipe.png)
 
 - Iron Backpack (36 slots)
 
-![](https://raw.githubusercontent.com/SpyMan10/backpackmod/master/imgs/iron_recipe.png)
+    ![](https://raw.githubusercontent.com/SpyMan10/backpackmod/master/imgs/iron_recipe.png)
 
 - Gold Backpack (54 slots)
 
-![](https://raw.githubusercontent.com/SpyMan10/backpackmod/master/imgs/gold_recipe.png)
+    ![](https://raw.githubusercontent.com/SpyMan10/backpackmod/master/imgs/gold_recipe.png)
 
 - Diamond Backpack (77 slots)
 
-![](https://raw.githubusercontent.com/SpyMan10/backpackmod/master/imgs/diamond_recipe.png)
+    ![](https://raw.githubusercontent.com/SpyMan10/backpackmod/master/imgs/diamond_recipe.png)
 
 - Netherite Backpack (117 slots, fireproof)
 
-![](https://raw.githubusercontent.com/SpyMan10/backpackmod/master/imgs/netherite_recipe.png)
+    ![](https://raw.githubusercontent.com/SpyMan10/backpackmod/master/imgs/netherite_recipe.png)
 
 - Ender backpack (Ender chest inventory)
 
-![](https://raw.githubusercontent.com/SpyMan10/backpackmod/master/imgs/ender_recipe.png)
+    ![](https://raw.githubusercontent.com/SpyMan10/backpackmod/master/imgs/ender_recipe.png)
 
-## How to build
+# Supported Minecraft Versions
 
-```
-git clone http://github.com/SpyMan10/backpackmod
-cd ./backpackmod/
-sh ./gradlew.sh build
-```
+- 1.16.x
+- 1.17.x
 
-You can get generated jar files in `./build/libs/`
+# Modpacks
 
-## Modpacks
+*`Yes you can include this mod in your own modpack`*
 
-Yes you can include this mod in your own modpack
+# Contributions
 
-## Contributors
+## Translations :
 
-- Translations :
-    - kazmurenko (ru_ru)
-    - linzexin022 (zh_cn)
+- SpyMan (fr_fr)
+- SpyMan (en_us)
+- kazmurenko (ru_ru)
+- linzexin022 (zh_cn)
+- Kazuya79 (pt_br)
+
+## Textures / Models
+
+- SpyMan (Models & Textures)
+
+## Java code
+
+- SpyMan
+
+# Minecraft Forge version ?
+
+*`Maybe, maybe not :)`*
+

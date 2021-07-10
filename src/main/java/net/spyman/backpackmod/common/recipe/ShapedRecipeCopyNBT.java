@@ -75,7 +75,7 @@ public class ShapedRecipeCopyNBT extends ShapedRecipe {
             final int i = pattern[0].length();
             final int j = pattern.length;
             final DefaultedList<Ingredient> inputs = getIngredients(pattern, map, i, j);
-            final ItemStack output = ShapedRecipe.getItemStack(JsonHelper.getObject(obj, "result"));
+            final ItemStack output = ShapedRecipe.outputFromJson(JsonHelper.getObject(obj, "result"));
             return new ShapedRecipeCopyNBT(identifier, group, i, j, inputs, output, obj.get("target_slot").getAsInt());
         }
 
@@ -99,7 +99,7 @@ public class ShapedRecipeCopyNBT extends ShapedRecipe {
             buf.writeVarInt(recipe.getWidth());
             buf.writeVarInt(recipe.getHeight());
             buf.writeString(recipe.group());
-            recipe.getPreviewInputs().forEach(i -> i.write(buf));
+            recipe.getIngredients().forEach(i -> i.write(buf));
             buf.writeItemStack(recipe.getOutput());
             buf.writeInt(recipe.targetSlot());
         }

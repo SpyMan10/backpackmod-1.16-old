@@ -1,24 +1,26 @@
 {
     "itemGroup.backpackmod.group": "Backpack Mod",
 
-    "item.backpackmod.leather_backpack": "Sac à dos en Cuire",
-    "item.backpackmod.iron_backpack": "Sac à dos en Fer",
-    "item.backpackmod.gold_backpack": "Sac à dos en Or",
-    "item.backpackmod.diamond_backpack": "Sac à dos en Diamant",
-    "item.backpackmod.netherite_backpack": "Sac à dos en Netherite",
+    "item.backpackmod.leather_backpack": "Sac à dos en cuire",
+    "item.backpackmod.copper_backpack": "Sac à dos en cuivre",
+    "item.backpackmod.iron_backpack": "Sac à dos en fer",
+    "item.backpackmod.amethyst_backpack": "Sac à dos en améthyste",
+    "item.backpackmod.gold_backpack": "Sac à dos en or",
+    "item.backpackmod.diamond_backpack": "Sac à dos en diamant",
+    "item.backpackmod.netherite_backpack": "Sac à dos en netherite",
 
-    "item.backpackmod.ender_backpack": "Sac à dos du Néant",
+    "item.backpackmod.ender_backpack": "Sac à dos du néant",
 
     "backpackmod.tooltip.size": "Taille: %sx%s (%s) emplacement(s)",
 
     "backpackmod.screen.title.rename": "Renommer",
     "backpackmod.screen.button.default.name": "Nom par défaut",
     "backpackmod.screen.button.rename": "Renommer",
-    "backpackmod.screen.rename.max.length": "Nombre de caractère maximum : %s",
-    "backpackmod.tooltip.how.to.rename": "Sneak + Clic droit pour renommer le sac à dos",
-
     "backpackmod.screen.button.close": "Fermer",
+    "backpackmod.screen.rename.max.length": "Nombre de caractère maximum : %s",
+
+    "backpackmod.tooltip.how.to.rename": "Accroupi + Clic droit pour renommer le sac à dos",
 
     "category.backpackmod.backpack": "BackpackMod",
-    "key.backpackmod.open": "Ouvrir le sac"
+    "key.backpackmod.open": "Ouvrir le sac à dos"
 }

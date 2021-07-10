@@ -4,15 +4,13 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventories;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.collection.DefaultedList;
 
 public class BackpackInventory implements Inventory {
 
-    // Slot matrix size
     private final int width;
     private final int height;
-
     private final DefaultedList<ItemStack> list;
     // ItemStack where nbt-data will be written
     private final ItemStack container;
@@ -22,6 +20,14 @@ public class BackpackInventory implements Inventory {
         this.height = height;
         this.list = DefaultedList.ofSize(width * height, ItemStack.EMPTY);
         this.container = container;
+    }
+
+    public int width() {
+        return this.width;
+    }
+
+    public int height() {
+        return this.height;
     }
 
     @Override
@@ -93,21 +99,13 @@ public class BackpackInventory implements Inventory {
 
     public void write() {
         if (this.container != null && !this.container.isEmpty()) {
-            this.container.getOrCreateTag().put("BackpackContent", Inventories.toTag(new CompoundTag(), this.list, true));
+            this.container.getOrCreateTag().put("BackpackContent", Inventories.writeNbt(new NbtCompound(), this.list, true));
         }
     }
 
     public void read() {
         if (this.container != null && !this.container.isEmpty()) {
-            Inventories.fromTag(this.container.getOrCreateTag().getCompound("BackpackContent"), this.list);
+            Inventories.readNbt(this.container.getOrCreateTag().getCompound("BackpackContent"), this.list);
         }
-    }
-
-    public int width() {
-        return this.width;
-    }
-
-    public int height() {
-        return this.height;
     }
 }
