@@ -5,6 +5,7 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.Slot;
+import net.minecraft.screen.slot.SlotActionType;
 import net.minecraft.util.Identifier;
 import net.spyman.backpackmod.common.init.BackpackScreenHandlers;
 
@@ -73,16 +74,17 @@ public class BackpackScreenHandler extends ScreenHandler {
         return stack;
     }
 
-//    @Override
-//    public void onSlotClick(int i, int j, SlotActionType type, PlayerEntity player) {
-//        if (type != SlotActionType.CLONE) {
-//            if (i >= 0 && player.getInventory().selectedSlot + 27 + this.inventory.size() == i) {
-//                return ItemStack.EMPTY;
-//            }
-//        }
-//
-//        super.onSlotClick(i, j, type, player);
-//    }
+    @Override
+    public void onSlotClick(int i, int j, SlotActionType type, PlayerEntity player) {
+        if (type != SlotActionType.CLONE) {
+            if (i >= 0 && player.getInventory().selectedSlot + 27 + this.inv.size() == i) {
+                this.setCursorStack(ItemStack.EMPTY);
+                return;
+            }
+        }
+
+        super.onSlotClick(i, j, type, player);
+    }
 
     @Override
     public void close(PlayerEntity player) {
