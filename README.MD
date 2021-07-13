@@ -1,10 +1,12 @@
+![](https://raw.githubusercontent.com/SpyMan10/backpackmod/1.17/imgs/mod_image.png)
+
 # Description
 
 This mod add somes new backpack items to the popular [Minecraft](http://minecraft.net) game,
 
 the mod require [Fabric Loader](https://fabricmc.net/) and [Fabric API](https://www.curseforge.com/minecraft/mc-mods/fabric-api) to work
 
-# How to get the mod
+# Download
 
 **[CurseForge download link](https://www.curseforge.com/minecraft/mc-mods/backpackmod)**
 
@@ -26,7 +28,7 @@ the mod require [Fabric Loader](https://fabricmc.net/) and [Fabric API](https://
 
 # Modpacks
 
-*`Yes you can include this mod in your own modpack`*
+### `Yes you can include this mod in your own modpack`
 
 # Contributions
 
@@ -48,5 +50,5 @@ the mod require [Fabric Loader](https://fabricmc.net/) and [Fabric API](https://
 
 # Minecraft Forge version ?
 
-*`Maybe, maybe not :)`*
+`Maybe, maybe not :)`
 
