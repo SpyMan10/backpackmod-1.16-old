@@ -78,7 +78,6 @@ public class BackpackScreenHandler extends ScreenHandler {
     public void onSlotClick(int i, int j, SlotActionType type, PlayerEntity player) {
         if (type != SlotActionType.CLONE) {
             if (i >= 0 && player.getInventory().selectedSlot + 27 + this.inv.size() == i) {
-                this.setCursorStack(ItemStack.EMPTY);
                 return;
             }
         }
