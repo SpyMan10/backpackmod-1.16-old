@@ -52,3 +52,6 @@ the mod require [Fabric Loader](https://fabricmc.net/) and [Fabric API](https://
 
 `Maybe, maybe not :)`
 
+# Item Recipes / Crafting
+
+![](https://raw.githubusercontent.com/SpyMan10/backpackmod/1.17/imgs/recipes.png)
