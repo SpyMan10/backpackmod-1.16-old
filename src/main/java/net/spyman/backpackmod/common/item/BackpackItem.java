@@ -88,6 +88,6 @@ public class BackpackItem extends Item {
 
     @Environment(EnvType.CLIENT)
     public static final void openRenameScreen(Hand hand, Text name) {
-        MinecraftClient.getInstance().openScreen(new BackpackRenameScreen(hand, name));
+        MinecraftClient.getInstance().setScreen(new BackpackRenameScreen(hand, name));
     }
 }

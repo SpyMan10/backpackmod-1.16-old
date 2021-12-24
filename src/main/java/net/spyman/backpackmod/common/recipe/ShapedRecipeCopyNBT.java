@@ -42,8 +42,8 @@ public class ShapedRecipeCopyNBT extends ShapedRecipe {
         if (!stack.isEmpty()) {
             final ItemStack out = super.craft(matrix);
 
-            if (stack.hasTag()) {
-                out.getOrCreateTag().copyFrom(stack.getTag());
+            if (stack.hasNbt()) {
+                out.getOrCreateNbt().copyFrom(stack.getNbt());
             }
 
             return out;

@@ -25,6 +25,7 @@ the mod require [Fabric Loader](https://fabricmc.net/) and [Fabric API](https://
 
 - 1.16.x
 - 1.17.x
+- 1.18.x
 
 # Modpacks
 

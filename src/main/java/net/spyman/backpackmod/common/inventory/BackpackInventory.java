@@ -99,13 +99,13 @@ public class BackpackInventory implements Inventory {
 
     public void write() {
         if (this.container != null && !this.container.isEmpty()) {
-            this.container.getOrCreateTag().put("BackpackContent", Inventories.writeNbt(new NbtCompound(), this.list, true));
+            this.container.getOrCreateNbt().put("BackpackContent", Inventories.writeNbt(new NbtCompound(), this.list, true));
         }
     }
 
     public void read() {
         if (this.container != null && !this.container.isEmpty()) {
-            Inventories.readNbt(this.container.getOrCreateTag().getCompound("BackpackContent"), this.list);
+            Inventories.readNbt(this.container.getOrCreateNbt().getCompound("BackpackContent"), this.list);
         }
     }
 }
