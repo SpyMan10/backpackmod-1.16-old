@@ -1,5 +1,6 @@
 package net.spyman.backpackmod.client.gui.screen;
 
+import com.mojang.blaze3d.systems.RenderSystem;
 import io.netty.buffer.Unpooled;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.minecraft.client.MinecraftClient;
@@ -48,26 +49,15 @@ public class BackpackRenameScreen extends Screen {
 
         this.textField = new TextFieldWidget(this.textRenderer, this.x + ((248 - 195) / 2), this.y + 50, 195, 20, this.placeHolder);
         this.textField.setMaxLength(NAME_MAX_CHARS);
-        this.addChild(this.textField);
+        this.addDrawableChild(this.textField);
         this.textField.setText(this.placeHolder.asString());
 
-        // Reset name
-        this.addButton(new ButtonIconWidget(this.x + (248 - 50) / 2, this.y + 120 - 26, BackpackMod.translate("screen.button.default.name"), b -> {
-            b.playDownSound(MinecraftClient.getInstance().getSoundManager());
-            this.sendChange(true);
-        }, ICONS, 32, 0, this::renderTooltip));
-
-        // Rename
-        this.addButton(new ButtonIconWidget(30 + this.x + (248 - 50) / 2, this.y + 120 - 26, BackpackMod.translate("screen.button.rename"), b -> {
-            b.playDownSound(MinecraftClient.getInstance().getSoundManager());
-            this.sendChange(false);
-        }, ICONS, 0, 0, this::renderTooltip));
-
-        // Close
-        this.addButton(new ButtonIconWidget(this.x + 222, this.y + 6, BackpackMod.translate("screen.button.close"), b -> {
-            b.playDownSound(MinecraftClient.getInstance().getSoundManager());
-            this.onClose();
-        }, ICONS, 16, 0, this::renderTooltip));
+        // Reset to default name button
+        this.addDrawableChild(new ButtonIconWidget(this.x + (248 - 50) / 2, this.y + 120 - 26, BackpackMod.translate("screen.button.default.name"), b -> this.sendChange(true), ICONS, 32, 0, this::renderTooltip));
+        // Rename button
+        this.addDrawableChild(new ButtonIconWidget(30 + this.x + (248 - 50) / 2, this.y + 120 - 26, BackpackMod.translate("screen.button.rename"), b -> this.sendChange(false), ICONS, 0, 0, this::renderTooltip));
+        // Close button
+        this.addDrawableChild(new ButtonIconWidget(this.x + 222, this.y + 6, BackpackMod.translate("screen.button.close"), b -> this.onClose(), ICONS, 16, 0, this::renderTooltip));
 
         this.setInitialFocus(this.textField);
     }
@@ -105,7 +95,7 @@ public class BackpackRenameScreen extends Screen {
         this.renderBackground(matrices);
 
         // Background rendering
-        this.client.getTextureManager().bindTexture(BACKGROUND);
+        RenderSystem.setShaderTexture(0, BACKGROUND);
         this.drawTexture(matrices, this.x, this.y, 0, 0, 248, 116);
         this.drawTexture(matrices, this.x, this.y + 116, 0, 162, 248, 4);
 

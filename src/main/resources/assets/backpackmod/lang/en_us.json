@@ -2,7 +2,9 @@
     "itemGroup.backpackmod.group": "Backpack Mod",
 
     "item.backpackmod.leather_backpack": "Leather Backpack",
+    "item.backpackmod.copper_backpack": "Copper Backpack",
     "item.backpackmod.iron_backpack": "Iron Backpack",
+    "item.backpackmod.amethyst_backpack": "Amethyst Backpack",
     "item.backpackmod.gold_backpack": "Gold Backpack",
     "item.backpackmod.diamond_backpack": "Diamond Backpack",
     "item.backpackmod.netherite_backpack": "Netherite Backpack",

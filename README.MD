@@ -1,53 +1,58 @@
-# Add backpacks to Minecraft 1.16+
+![](https://raw.githubusercontent.com/SpyMan10/backpackmod/1.17/imgs/mod_image.png)
 
-This mod require [Fabric Loader](https://fabricmc.net/) and [Fabric API](https://www.curseforge.com/minecraft/mc-mods/fabric-api) to work
+# Description
 
-## How to get the mod
+This mod add somes new backpack items to the popular [Minecraft](http://minecraft.net) game,
 
-[CurseForge download link](https://www.curseforge.com/minecraft/mc-mods/backpackmod)
+the mod require [Fabric Loader](https://fabricmc.net/) and [Fabric API](https://www.curseforge.com/minecraft/mc-mods/fabric-api) to work
 
-## Items
+# Download
+
+**[CurseForge download link](https://www.curseforge.com/minecraft/mc-mods/backpackmod)**
+
+# Items
 
 - Leather Backpack (18 slots)
-
-![](https://raw.githubusercontent.com/SpyMan10/backpackmod/master/imgs/leather_recipe.png)
-
+- Copper Backpack (27 slots)
 - Iron Backpack (36 slots)
-
-![](https://raw.githubusercontent.com/SpyMan10/backpackmod/master/imgs/iron_recipe.png)
-
+- Amethyst Backpack (45 slots)
 - Gold Backpack (54 slots)
-
-![](https://raw.githubusercontent.com/SpyMan10/backpackmod/master/imgs/gold_recipe.png)
-
 - Diamond Backpack (77 slots)
-
-![](https://raw.githubusercontent.com/SpyMan10/backpackmod/master/imgs/diamond_recipe.png)
-
 - Netherite Backpack (117 slots, fireproof)
-
-![](https://raw.githubusercontent.com/SpyMan10/backpackmod/master/imgs/netherite_recipe.png)
-
 - Ender backpack (Ender chest inventory)
 
-![](https://raw.githubusercontent.com/SpyMan10/backpackmod/master/imgs/ender_recipe.png)
+# Supported Minecraft Versions
 
-## How to build
+- 1.16.x
+- 1.17.x
+- 1.18.x
 
-```
-git clone http://github.com/SpyMan10/backpackmod
-cd ./backpackmod/
-sh ./gradlew.sh build
-```
+# Modpacks
 
-You can get generated jar files in `./build/libs/`
+### `Yes you can include this mod in your own modpack`
 
-## Modpacks
+# Contributions
 
-Yes you can include this mod in your own modpack
+## Translations :
 
-## Contributors
+- SpyMan (fr_fr)
+- SpyMan (en_us)
+- kazmurenko (ru_ru)
+- linzexin022 (zh_cn)
+- Kazuya79 (pt_br)
 
-- Translations :
-    - kazmurenko (ru_ru)
-    - linzexin022 (zh_cn)
+## Textures / Models
+
+- SpyMan (Models & Textures)
+
+## Java code
+
+- SpyMan
+
+# Minecraft Forge version ?
+
+`Maybe, maybe not :)`
+
+# Item Recipes / Crafting
+
+![](https://raw.githubusercontent.com/SpyMan10/backpackmod/1.17/imgs/recipes.png)

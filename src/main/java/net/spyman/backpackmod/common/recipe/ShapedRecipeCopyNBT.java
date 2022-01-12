@@ -35,15 +35,15 @@ public class ShapedRecipeCopyNBT extends ShapedRecipe {
     @Override
     public ItemStack craft(CraftingInventory matrix) {
         if (this.targetSlot < 0 || this.targetSlot >= matrix.size()) {
-            throw new IllegalArgumentException("ShapedRecipeCopyNBT: wrong value for 'target_slot' key, specify the slot the itemstack to copy NBT is");
+            throw new IllegalArgumentException("ShapedRecipeCopyNBT: Wrong value for 'target_slot' key, specify the slot where is the itemstack source top copy NBT-Data.");
         }
 
         final ItemStack stack = matrix.getStack(targetSlot);
         if (!stack.isEmpty()) {
             final ItemStack out = super.craft(matrix);
 
-            if (stack.hasTag()) {
-                out.getOrCreateTag().copyFrom(stack.getTag());
+            if (stack.hasNbt()) {
+                out.getOrCreateNbt().copyFrom(stack.getNbt());
             }
 
             return out;
@@ -75,7 +75,7 @@ public class ShapedRecipeCopyNBT extends ShapedRecipe {
             final int i = pattern[0].length();
             final int j = pattern.length;
             final DefaultedList<Ingredient> inputs = getIngredients(pattern, map, i, j);
-            final ItemStack output = ShapedRecipe.getItemStack(JsonHelper.getObject(obj, "result"));
+            final ItemStack output = ShapedRecipe.outputFromJson(JsonHelper.getObject(obj, "result"));
             return new ShapedRecipeCopyNBT(identifier, group, i, j, inputs, output, obj.get("target_slot").getAsInt());
         }
 
@@ -99,7 +99,7 @@ public class ShapedRecipeCopyNBT extends ShapedRecipe {
             buf.writeVarInt(recipe.getWidth());
             buf.writeVarInt(recipe.getHeight());
             buf.writeString(recipe.group());
-            recipe.getPreviewInputs().forEach(i -> i.write(buf));
+            recipe.getIngredients().forEach(i -> i.write(buf));
             buf.writeItemStack(recipe.getOutput());
             buf.writeInt(recipe.targetSlot());
         }

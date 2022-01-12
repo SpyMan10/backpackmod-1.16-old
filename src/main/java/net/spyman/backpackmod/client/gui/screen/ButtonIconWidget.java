@@ -4,6 +4,7 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.widget.ButtonWidget;
+import net.minecraft.client.render.GameRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
@@ -27,22 +28,29 @@ public class ButtonIconWidget extends ButtonWidget {
     public void renderButton(MatrixStack matrices, int mouseX, int mouseY, float delta) {
         final MinecraftClient client = MinecraftClient.getInstance();
         TextRenderer textRenderer = client.textRenderer;
-        client.getTextureManager().bindTexture(WIDGETS_LOCATION);
-        RenderSystem.color4f(1.0F, 1.0F, 1.0F, this.alpha);
+        RenderSystem.setShader(GameRenderer::getPositionTexShader);
+        RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, this.alpha);
         int i = this.getYImage(this.isHovered());
         RenderSystem.enableBlend();
         RenderSystem.defaultBlendFunc();
         RenderSystem.enableDepthTest();
+        RenderSystem.setShaderTexture(0, WIDGETS_TEXTURE);
         this.drawTexture(matrices, this.x, this.y, 0, 46 + i * 20, this.width / 2, this.height);
         this.drawTexture(matrices, this.x + this.width / 2, this.y, 200 - this.width / 2, 46 + i * 20, this.width / 2, this.height);
-        this.renderBg(matrices, client, mouseX, mouseY);
+        this.renderBackground(matrices, client, mouseX, mouseY);
 
-        MinecraftClient.getInstance().getTextureManager().bindTexture(this.icon);
+        RenderSystem.setShaderTexture(0, icon);
         this.drawTexture(matrices, this.x + 2, this.y + 2, this.ix, this.iy, 16, 16);
 
         if (mouseX >= this.x && mouseX < this.x + this.width && mouseY >= this.y && mouseY < this.y + this.height) {
             this.cb.render(matrices, this.getMessage(), mouseX, mouseY);
         }
+    }
+
+    @Override
+    public void onPress() {
+        this.playDownSound(MinecraftClient.getInstance().getSoundManager());
+        super.onPress();
     }
 
     @FunctionalInterface

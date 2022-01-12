@@ -14,32 +14,32 @@ import static net.spyman.backpackmod.common.BackpackMod.identify;
 public class BackpackScreenHandler extends ScreenHandler {
 
     public static final Identifier IDENTIFIER = identify("generic_container");
-    private final BackpackInventory inventory;
+    private final BackpackInventory inv;
 
-    public BackpackScreenHandler(PlayerInventory playerInv, int sync, BackpackInventory inventory) {
+    public BackpackScreenHandler(PlayerInventory playerInv, int sync, BackpackInventory inv) {
         super(BackpackScreenHandlers.BACKPACK_SCREEN_HANDLER, sync);
-        this.inventory = inventory;
+        this.inv = inv;
 
         // Backpack inventory
-        for (int n = 0; n < this.inventory.height(); ++n) {
-            for (int m = 0; m < this.inventory.width(); ++m) {
-                this.addSlot(new BackpackSlot(inventory, m + n * this.inventory.width(), 8 + m * 18, 18 + n * 18));
+        for (int n = 0; n < this.inv.height(); ++n) {
+            for (int m = 0; m < this.inv.width(); ++m) {
+                this.addSlot(new BackpackSlot(inv, m + n * this.inv.width(), 8 + m * 18, 18 + n * 18));
             }
         }
 
         // Player inventory
         for (int n = 0; n < 3; ++n) {
             for (int m = 0; m < 9; ++m) {
-                this.addSlot(new Slot(playerInv, m + n * 9 + 9, 8 + (this.inventory.width() * 18 - 162) / 2 + m * 18, 31 + (this.inventory.height() + n) * 18));
+                this.addSlot(new Slot(playerInv, m + n * 9 + 9, 8 + (this.inv.width() * 18 - 162) / 2 + m * 18, 31 + (this.inv.height() + n) * 18));
             }
         }
 
         // Player hotbar
         for (int n = 0; n < 9; ++n) {
-            this.addSlot(new Slot(playerInv, n, 8 + (this.inventory.width() * 18 - 162) / 2 + n * 18, 89 + this.inventory.height() * 18));
+            this.addSlot(new Slot(playerInv, n, 8 + (this.inv.width() * 18 - 162) / 2 + n * 18, 89 + this.inv.height() * 18));
         }
 
-        this.inventory.onOpen(playerInv.player);
+        this.inv.onOpen(playerInv.player);
     }
 
     @Override
@@ -56,11 +56,11 @@ public class BackpackScreenHandler extends ScreenHandler {
             final ItemStack stack2 = slot.getStack();
             stack = stack2.copy();
 
-            if (index < this.inventory.size()) {
-                if (!this.insertItem(stack2, this.inventory.size(), this.slots.size(), true)) {
+            if (index < this.inv.size()) {
+                if (!this.insertItem(stack2, this.inv.size(), this.slots.size(), true)) {
                     return ItemStack.EMPTY;
                 }
-            } else if (!this.insertItem(stack2, 0, this.inventory.size(), false)) {
+            } else if (!this.insertItem(stack2, 0, this.inv.size(), false)) {
                 return ItemStack.EMPTY;
             }
 
@@ -74,24 +74,24 @@ public class BackpackScreenHandler extends ScreenHandler {
         return stack;
     }
 
-//    @Override
-//    public ItemStack onSlotClick(int i, int j, SlotActionType type, PlayerEntity player) {
-//        if (type != SlotActionType.CLONE) {
-//            if (i >= 0 && player.inventory.selectedSlot + 27 + this.inventory.size() == i) {
-//                return ItemStack.EMPTY;
-//            }
-//        }
-//
-//        return super.onSlotClick(i, j, type, player);
-//    }
+    @Override
+    public void onSlotClick(int i, int j, SlotActionType type, PlayerEntity player) {
+        if (type != SlotActionType.CLONE) {
+            if (i >= 0 && player.getInventory().selectedSlot + 27 + this.inv.size() == i) {
+                return;
+            }
+        }
+
+        super.onSlotClick(i, j, type, player);
+    }
 
     @Override
     public void close(PlayerEntity player) {
         super.close(player);
-        this.inventory.onClose(player);
+        this.inv.onClose(player);
     }
 
     public BackpackInventory inventory() {
-        return this.inventory;
+        return this.inv;
     }
 }

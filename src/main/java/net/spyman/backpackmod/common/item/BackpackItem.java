@@ -1,8 +1,5 @@
 package net.spyman.backpackmod.common.item;
 
-import dev.emi.trinkets.api.SlotGroups;
-import dev.emi.trinkets.api.Slots;
-import dev.emi.trinkets.api.Trinket;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
@@ -30,7 +27,7 @@ import java.util.List;
 
 import static net.spyman.backpackmod.common.BackpackMod.translate;
 
-public class BackpackItem extends Item implements Trinket {
+public class BackpackItem extends Item {
 
     private final int width;
     private final int height;
@@ -63,22 +60,8 @@ public class BackpackItem extends Item implements Trinket {
 
     @Override
     public void appendTooltip(ItemStack stack, World world, List<Text> tooltip, TooltipContext context) {
-        tooltip.add(translate("tooltip.size", this.width, this.height, this.size()).formatted(Formatting.GRAY));
-        tooltip.add(translate("tooltip.how.to.rename").formatted(Formatting.GRAY));
-    }
-
-    /**
-     * Return backpack inventory size
-     *
-     * @return Inventory size (number of slots)
-     */
-    public int size() {
-        return this.width * this.height;
-    }
-
-    @Override
-    public boolean canWearInSlot(String group, String slot) {
-        return slot.equalsIgnoreCase(Slots.BACKPACK) && group.equalsIgnoreCase(SlotGroups.CHEST);
+        tooltip.add(translate("tooltip.size", this.width, this.height, this.width * this.height).formatted(Formatting.GRAY));
+        tooltip.add(translate("tooltip.how.to.rename").formatted(Formatting.ITALIC, Formatting.GRAY));
     }
 
     public static final void openScreen(PlayerEntity user, ItemStack stack) {
@@ -105,6 +88,6 @@ public class BackpackItem extends Item implements Trinket {
 
     @Environment(EnvType.CLIENT)
     public static final void openRenameScreen(Hand hand, Text name) {
-        MinecraftClient.getInstance().openScreen(new BackpackRenameScreen(hand, name));
+        MinecraftClient.getInstance().setScreen(new BackpackRenameScreen(hand, name));
     }
 }

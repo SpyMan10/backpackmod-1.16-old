@@ -1,0 +1,24 @@
+{
+    "type": "backpackmod:shaped_copy_nbt",
+    "group": "backpackmod",
+    "pattern": [
+        "###",
+        "CBC",
+        "###"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:iron_ingot"
+        },
+        "B": {
+            "item": "backpackmod:copper_backpack"
+        },
+        "C": {
+            "item": "minecraft:chest"
+        }
+    },
+    "result": {
+        "item": "backpackmod:iron_backpack"
+    },
+    "target_slot": 4
+}
