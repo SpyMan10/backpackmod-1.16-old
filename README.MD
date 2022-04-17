@@ -51,22 +51,22 @@ Open `~/<game-dir>/config/backpackmod.json`, this file look like this :
 ### Configuration
 
 - `general`
-  - `enableEnderBackpack` (boolean) : Set to true to enable EnderBackpack (ender chest invnentory)
-  - `nbtTagName` (string) : NBT tag name where backpack content will be written, don't modify this value. If you modify this value, ALL BACKPACK'S CONTENT WILL BE LOST
+  - `enableEnderBackpack` (boolean) : Set to true to enable EnderBackpack (ender chest inventory)
+  - `nbtTagName` (string) : NBT tag name where backpack content will be written, don't modify this value. Or ALL BACKPACK'S CONTENT WILL BE LOST
 - `backpacks` (array) : List of backpack items to add
 
   ```json
   {
-      "name": "my_super_backpack",
-      "fireproof": true,
-      "rarity": "epic",
+      "name": "leather_backpack",
+      "fireproof": false,
+      "rarity": "common",
       "inventory": {
-          "width": 6,
-          "height": 6
+          "width": 9,
+          "height": 2
       }
   }
   ```
-  - `name` (string) : Registry item name (`backpackmod:my_super_backpack`)
+  - `name` (string) : Registry item name (`backpackmod:leather_backpack`)
   - `fireproof` (boolean) : Set to true to make your backpack fire proof (the backpack item will not be destroyed in fire/lava, like netherite items) 
   - `rarity` (string) : Item rarity, must be one of the following values : `common`, `uncommon`, `rare`, `epic`
   - `inventory`
