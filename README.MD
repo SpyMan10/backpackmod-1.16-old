@@ -75,16 +75,16 @@ Open file `~/<game-dir>/config/backpackmod.json`, this file look like this :
     - `width` (int) : Inventory slot matrix width
     - `height` (int) : Inventory slot matrix height
 
-Resource like texture, translation, recipe must be added manually added with an external resource pack / data pack
+Resource like texture, translation, recipe must be manually added with an external resource pack / data pack
 
 ## Modpacks
 
 `Yes you can include this mod in your own modpack`
 
-## Minecraft Forge version ?
+## Minecraft Forge Version ?
 
 `Maybe`
 
-## Builtin item recipes
+## Built-in Recipes
 
 ![](https://raw.githubusercontent.com/SpyMan10/backpackmod/1.17/imgs/recipes.png)
