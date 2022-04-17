@@ -2,14 +2,14 @@
 
 ## Description
 
-This mod allow you to add new backpack items to the popular [Minecraft](http://minecraft.net) game,
+This mod allow you to add new backpack items using JSON to the popular [Minecraft](http://minecraft.net) game,
 the mod require [Fabric Loader](https://fabricmc.net/) and [Fabric API](https://www.curseforge.com/minecraft/mc-mods/fabric-api) to work
 
 ## Download
 
 **[CurseForge](https://www.curseforge.com/minecraft/mc-mods/backpackmod)**
 
-## Builtin items (Can be modified or removed in configuration file)
+## Builtin Items
 
 - Leather Backpack (18 slots)
 - Copper Backpack (27 slots)
@@ -20,13 +20,15 @@ the mod require [Fabric Loader](https://fabricmc.net/) and [Fabric API](https://
 - Netherite Backpack (117 slots, fireproof)
 - Ender backpack (Ender chest inventory)
 
+All built-in items can be modified or fully removed using configuration file
+
 ## Supported Minecraft Versions
 
 - 1.18.2
 
 ## How to configure/add new backpack item ?
 
-Open `~/<game-dir>/config/backpackmod.json`, this file look like this :
+Open file `~/<game-dir>/config/backpackmod.json`, this file look like this :
 
 ```json
 {
