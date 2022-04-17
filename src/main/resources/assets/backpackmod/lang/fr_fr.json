@@ -21,6 +21,8 @@
 
     "backpackmod.tooltip.how.to.rename": "Accroupi + Clic droit pour renommer le sac à dos",
 
+    "backpackmod.tooltip.fireproof": "Résiste au feu (comme les objets en netherite)",
+
     "category.backpackmod.backpack": "BackpackMod",
     "key.backpackmod.open": "Ouvrir le sac à dos"
 }

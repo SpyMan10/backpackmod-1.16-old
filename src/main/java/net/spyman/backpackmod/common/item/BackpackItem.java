@@ -62,6 +62,10 @@ public class BackpackItem extends Item {
     public void appendTooltip(ItemStack stack, World world, List<Text> tooltip, TooltipContext context) {
         tooltip.add(translate("tooltip.size", this.width, this.height, this.width * this.height).formatted(Formatting.GRAY));
         tooltip.add(translate("tooltip.how.to.rename").formatted(Formatting.ITALIC, Formatting.GRAY));
+
+        if (this.isFireproof()) {
+            tooltip.add(translate("tooltip.fireproof").formatted(Formatting.GOLD));
+        }
     }
 
     public static final void openScreen(PlayerEntity user, ItemStack stack) {

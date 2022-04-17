@@ -3,7 +3,7 @@
     "id": "backpackmod",
     "version": "${version}",
     "name": "Backpack Mod",
-    "description": "Very very veryyyy useful backpacks",
+    "description": "Fully configurable backpack items",
     "authors": [
         "SpyMan"
     ],
@@ -26,7 +26,7 @@
         "backpackmod.mixins.json"
     ],
     "depends": {
-        "fabricloader": ">=0.11.3",
+        "fabricloader": ">=0.13.3",
         "fabric": "*",
         "minecraft": "1.18.x",
         "java": ">=17"
