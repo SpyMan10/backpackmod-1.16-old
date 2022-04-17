@@ -5,13 +5,9 @@
 This mod allow you to add new backpack items to the popular [Minecraft](http://minecraft.net) game,
 the mod require [Fabric Loader](https://fabricmc.net/) and [Fabric API](https://www.curseforge.com/minecraft/mc-mods/fabric-api) to work
 
----
-
 ## Download
 
 **[CurseForge](https://www.curseforge.com/minecraft/mc-mods/backpackmod)**
-
----
 
 ## Builtin items (Can be modified or removed in configuration file)
 
@@ -27,8 +23,6 @@ the mod require [Fabric Loader](https://fabricmc.net/) and [Fabric API](https://
 ## Supported Minecraft Versions
 
 - 1.18.2
-
----
 
 ## How to configure/add new backpack item ?
 
@@ -81,19 +75,13 @@ Open `~/<game-dir>/config/backpackmod.json`, this file look like this :
 
 Resource like texture, translation, recipe must be added manually added with an external resource pack / data pack
 
----
-
 ## Modpacks
 
 `Yes you can include this mod in your own modpack`
 
----
-
 ## Minecraft Forge version ?
 
 `Maybe`
-
----
 
 ## Builtin item recipes
 
