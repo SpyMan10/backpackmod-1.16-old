@@ -1,16 +1,19 @@
 ![](https://raw.githubusercontent.com/SpyMan10/backpackmod/1.17/imgs/mod_image.png)
 
-# Description
+## Description
 
-This mod add somes new backpack items to the popular [Minecraft](http://minecraft.net) game,
-
+This mod allow you to add new backpack items to the popular [Minecraft](http://minecraft.net) game,
 the mod require [Fabric Loader](https://fabricmc.net/) and [Fabric API](https://www.curseforge.com/minecraft/mc-mods/fabric-api) to work
 
-# Download
+---
 
-**[CurseForge download link](https://www.curseforge.com/minecraft/mc-mods/backpackmod)**
+## Download
 
-# Items
+**[CurseForge](https://www.curseforge.com/minecraft/mc-mods/backpackmod)**
+
+---
+
+## Builtin items (Can be modified or removed in configuration file)
 
 - Leather Backpack (18 slots)
 - Copper Backpack (27 slots)
@@ -21,38 +24,77 @@ the mod require [Fabric Loader](https://fabricmc.net/) and [Fabric API](https://
 - Netherite Backpack (117 slots, fireproof)
 - Ender backpack (Ender chest inventory)
 
-# Supported Minecraft Versions
+## Supported Minecraft Versions
 
-- 1.16.x
-- 1.17.x
-- 1.18.x
+- 1.18.2
 
-# Modpacks
+---
 
-### `Yes you can include this mod in your own modpack`
+## How to configure/add new backpack item ?
 
-# Contributions
+Open `~/<game-dir>/config/backpackmod.json`, this file look like this :
 
-## Translations :
+```json
+{
+    "general": {
+        "enableEnderBackpack": true,
+        "nbtTagName": "BackpackContent"
+    },
+    "backpacks": [
+        {
+            "name": "leather_backpack",
+            "fireproof": false,
+            "rarity": "common",
+            "inventory": {
+                "width": 9,
+                "height": 2
+            }
+        }
+    ]
+}
+```
 
-- SpyMan (fr_fr)
-- SpyMan (en_us)
-- kazmurenko (ru_ru)
-- linzexin022 (zh_cn)
-- Kazuya79 (pt_br)
+### Configuration
 
-## Textures / Models
+- `general`
+  - `enableEnderBackpack` (boolean) : Set to true to enable EnderBackpack (ender chest invnentory)
+  - `nbtTagName` (string) : NBT tag name where backpack content will be written, don't modify this value. If you modify this value, ALL BACKPACK'S CONTENT WILL BE LOST
+- `backpacks` (array) : List of backpack items to add
 
-- SpyMan (Models & Textures)
+  ```json
+  {
+      "name": "my_super_backpack",
+      "fireproof": true,
+      "rarity": "epic",
+      "inventory": {
+          "width": 6,
+          "height": 6
+      }
+  }
+  ```
+  - `name` (string) : Registry item name (`backpackmod:my_super_backpack`)
+  - `fireproof` (boolean) : Set to true to make your backpack fire proof (the backpack item will not be destroyed in fire/lava, like netherite items) 
+  - `rarity` (string) : Item rarity, must be one of the following values : `common`, `uncommon`, `rare`, `epic`
+  - `inventory`
+    - `width` (int) : Inventory slot matrix width
+    - `height` (int) : Inventory slot matrix height
 
-## Java code
+Resource like texture, translation, recipe must be added manually added with an external resource pack / data pack
 
-- SpyMan
+---
 
-# Minecraft Forge version ?
+## Modpacks
 
-`Maybe, maybe not :)`
+`Yes you can include this mod in your own modpack`
 
-# Item Recipes / Crafting
+---
+
+## Minecraft Forge version ?
+
+`Maybe`
+
+---
+
+## Builtin item recipes
 
 ![](https://raw.githubusercontent.com/SpyMan10/backpackmod/1.17/imgs/recipes.png)
