@@ -11,6 +11,7 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
 import net.spyman.backpackmod.common.init.BackpackItems;
 import net.spyman.backpackmod.common.init.BackpackRecipes;
+import net.spyman.backpackmod.common.init.BackpackScreenHandlers;
 import net.spyman.backpackmod.common.item.BackpackItem;
 
 public final class BackpackMod implements ModInitializer {
@@ -25,6 +26,7 @@ public final class BackpackMod implements ModInitializer {
     public void onInitialize() {
         BackpackItems.register();
         BackpackRecipes.register();
+        BackpackScreenHandlers.register();
 
         ServerPlayNetworking.registerGlobalReceiver(PACKET_RENAME_BACKPACK, (server, player, handler, buf, responseSender) -> {
             final boolean def = buf.readBoolean();
