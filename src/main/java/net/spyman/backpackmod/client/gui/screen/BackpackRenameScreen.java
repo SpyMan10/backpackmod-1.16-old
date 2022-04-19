@@ -57,7 +57,7 @@ public class BackpackRenameScreen extends Screen {
         // Rename button
         this.addDrawableChild(new ButtonIconWidget(30 + this.x + (248 - 50) / 2, this.y + 120 - 26, BackpackMod.translate("screen.button.rename"), b -> this.sendChange(false), ICONS, 0, 0, this::renderTooltip));
         // Close button
-        this.addDrawableChild(new ButtonIconWidget(this.x + 222, this.y + 6, BackpackMod.translate("screen.button.close"), b -> this.onClose(), ICONS, 16, 0, this::renderTooltip));
+        this.addDrawableChild(new ButtonIconWidget(this.x + 222, this.y + 6, BackpackMod.translate("screen.button.close"), b -> this.close(), ICONS, 16, 0, this::renderTooltip));
 
         this.setInitialFocus(this.textField);
     }
@@ -72,7 +72,7 @@ public class BackpackRenameScreen extends Screen {
         }
 
         ClientPlayNetworking.send(BackpackMod.PACKET_RENAME_BACKPACK, buf);
-        this.onClose();
+        this.close();
     }
 
     @Override
