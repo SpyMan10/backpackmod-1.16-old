@@ -1,43 +1,50 @@
 package net.spyman.backpackmod.common.config;
 
-import com.google.gson.*;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import net.fabricmc.loader.api.FabricLoader;
 import net.spyman.backpackmod.common.BackpackMod;
 
 import java.io.*;
-import java.lang.reflect.Type;
 
 import static net.spyman.backpackmod.common.BackpackMod.LOGGER;
 
 public final class BackpackCfgFile {
 
     public static final BackpackCfgFile INSTANCE = new BackpackCfgFile();
-
+    /**
+     * Configuration file name
+     */
+    public static final String CFG_NAME = BackpackMod.MODID + ".json";
     private static final Gson GSON = new GsonBuilder()
             .setPrettyPrinting()
             .registerTypeAdapter(BackpackConfig.class, new BackpackConfig.Serializer())
             .registerTypeAdapter(BackpackEntry.class, new BackpackEntry.Serializer())
             .create();
-
-    /** Configuration file name */
-    public static final String CFG_NAME = BackpackMod.MODID + ".json";
-
-    /** Config */
+    /**
+     * Config
+     */
     private BackpackConfig config;
 
-    /** Config file */
+    /**
+     * Config file
+     */
     private File file;
 
     public BackpackCfgFile() {
         this.config = new BackpackConfig();
     }
 
-    /** Initialize configuration file */
+    /**
+     * Initialize configuration file
+     */
     public void init() {
         this.file = FabricLoader.getInstance().getConfigDir().resolve(CFG_NAME).toFile();
     }
 
-    /** Called once at startup to load existing cfg, or create default cfg file */
+    /**
+     * Called once at startup to load existing cfg, or create default cfg file
+     */
     public void load() {
         try {
             if (file.exists()) {
@@ -53,7 +60,9 @@ public final class BackpackCfgFile {
         }
     }
 
-    /** Save the current configuration to the configuration file */
+    /**
+     * Save the current configuration to the configuration file
+     */
     public void save() {
         LOGGER.info("Configuration file successfuly written");
 

@@ -2,7 +2,6 @@ package net.spyman.backpackmod.common.config;
 
 import com.google.gson.*;
 import net.minecraft.util.Rarity;
-import net.spyman.backpackmod.common.inventory.BackpackInventory;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;

@@ -10,15 +10,25 @@ import java.lang.reflect.Type;
 
 public class BackpackEntry {
 
-    /** Item registry name */
+    /**
+     * Item registry name
+     */
     private final String name;
-    /** Number of inventory width */
+    /**
+     * Number of inventory width
+     */
     private final int width;
-    /** Inventory height */
+    /**
+     * Inventory height
+     */
     private final int height;
-    /** Fireproof */
+    /**
+     * Fireproof
+     */
     private final boolean fireproof;
-    /** Rarity */
+    /**
+     * Rarity
+     */
     private final Rarity rarity;
 
     private BackpackEntry(String name, int width, int height, boolean fireproof, Rarity rarity) {
