@@ -24,11 +24,11 @@ All built-in items can be modified or fully removed using configuration file
 
 ## Supported Minecraft Versions
 
-- 1.18.2
+- 1.19
 
 ## How to configure/add new backpack item ?
 
-Open file `~/<game-dir>/config/backpackmod.json`, this file look like this :
+Open file `~/<game-dir>/config/backpackmod.json`, this file look like that :
 
 ```json
 {
