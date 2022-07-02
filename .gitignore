@@ -4,7 +4,8 @@
 build/
 out/
 classes/
-
+branch_backup/
+remappedSrc/
 # eclipse
 
 *.launch

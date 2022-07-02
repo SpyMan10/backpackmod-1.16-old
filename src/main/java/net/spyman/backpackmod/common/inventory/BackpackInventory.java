@@ -6,6 +6,7 @@ import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.collection.DefaultedList;
+import net.spyman.backpackmod.common.config.BackpackCfgFile;
 
 public class BackpackInventory implements Inventory {
 
@@ -99,13 +100,13 @@ public class BackpackInventory implements Inventory {
 
     public void write() {
         if (this.container != null && !this.container.isEmpty()) {
-            this.container.getOrCreateNbt().put("BackpackContent", Inventories.writeNbt(new NbtCompound(), this.list, true));
+            this.container.getOrCreateNbt().put(BackpackCfgFile.config().nbtTagName(), Inventories.writeNbt(new NbtCompound(), this.list, true));
         }
     }
 
     public void read() {
         if (this.container != null && !this.container.isEmpty()) {
-            Inventories.readNbt(this.container.getOrCreateNbt().getCompound("BackpackContent"), this.list);
+            Inventories.readNbt(this.container.getOrCreateNbt().getCompound(BackpackCfgFile.config().nbtTagName()), this.list);
         }
     }
 }

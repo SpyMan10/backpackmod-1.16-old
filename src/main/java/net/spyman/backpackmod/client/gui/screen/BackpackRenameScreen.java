@@ -10,7 +10,7 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.text.OrderedText;
 import net.minecraft.text.Text;
-import net.minecraft.text.TranslatableText;
+import net.minecraft.text.TranslatableTextContent;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
 import net.spyman.backpackmod.common.BackpackMod;
@@ -26,7 +26,7 @@ public class BackpackRenameScreen extends Screen {
     private final Hand hand;
     private final Text placeHolder;
     private final OrderedText orderedTextTitle;
-    private final TranslatableText maxCharsMsg;
+    private final Text maxCharsMsg;
     private TextFieldWidget textField;
 
     private int x;
@@ -50,7 +50,7 @@ public class BackpackRenameScreen extends Screen {
         this.textField = new TextFieldWidget(this.textRenderer, this.x + ((248 - 195) / 2), this.y + 50, 195, 20, this.placeHolder);
         this.textField.setMaxLength(NAME_MAX_CHARS);
         this.addDrawableChild(this.textField);
-        this.textField.setText(this.placeHolder.asString());
+        this.textField.setText(this.placeHolder.getString());
 
         // Reset to default name button
         this.addDrawableChild(new ButtonIconWidget(this.x + (248 - 50) / 2, this.y + 120 - 26, BackpackMod.translate("screen.button.default.name"), b -> this.sendChange(true), ICONS, 32, 0, this::renderTooltip));

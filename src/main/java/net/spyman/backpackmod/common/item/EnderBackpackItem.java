@@ -7,14 +7,14 @@ import net.minecraft.screen.GenericContainerScreenHandler;
 import net.minecraft.screen.SimpleNamedScreenHandlerFactory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
-import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
+import net.spyman.backpackmod.common.BackpackMod;
 
 public class EnderBackpackItem extends Item {
 
-    public static final Text CONTAINER_NAME = new TranslatableText("container.enderchest");
+    public static final Text CONTAINER_NAME = BackpackMod.translate("container.enderchest");
 
     public EnderBackpackItem(Settings settings) {
         super(settings.maxCount(1));
