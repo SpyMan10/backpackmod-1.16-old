@@ -13,6 +13,7 @@ import net.minecraft.util.Identifier;
 import net.spyman.backpackmod.common.config.BackpackCfgFile;
 import net.spyman.backpackmod.common.init.BackpackItems;
 import net.spyman.backpackmod.common.init.BackpackRecipes;
+import net.spyman.backpackmod.common.init.BackpackScreenHandlers;
 import net.spyman.backpackmod.common.item.BackpackItem;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,6 +37,7 @@ public final class BackpackMod implements ModInitializer {
 
         BackpackItems.register();
         BackpackRecipes.register();
+        BackpackScreenHandlers.register();
 
         ServerPlayNetworking.registerGlobalReceiver(PACKET_RENAME_BACKPACK, (server, player, handler, buf, responseSender) -> {
             final boolean def = buf.readBoolean();
