@@ -8,6 +8,7 @@ import net.spyman.backpackmod.common.item.BackpackItem;
 
 import java.lang.reflect.Type;
 
+// Should be a record instead of a class
 public class BackpackEntry {
 
     /**
