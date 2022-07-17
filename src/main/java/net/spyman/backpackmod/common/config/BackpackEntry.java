@@ -15,7 +15,7 @@ public class BackpackEntry {
      */
     private final String name;
     /**
-     * Number of inventory width
+     * Inventory width
      */
     private final int width;
     /**
