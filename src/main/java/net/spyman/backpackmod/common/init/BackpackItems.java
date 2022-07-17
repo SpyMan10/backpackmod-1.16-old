@@ -1,10 +1,8 @@
 package net.spyman.backpackmod.common.init;
 
 import net.minecraft.item.Item;
-import net.minecraft.util.Rarity;
 import net.minecraft.util.registry.Registry;
 import net.spyman.backpackmod.common.config.BackpackCfgFile;
-import net.spyman.backpackmod.common.item.BackpackItem;
 import net.spyman.backpackmod.common.item.EnderBackpackItem;
 
 import static net.spyman.backpackmod.common.BackpackMod.GROUP;
