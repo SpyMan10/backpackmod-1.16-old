@@ -19,6 +19,8 @@
     "backpackmod.screen.rename.max.length": "Max length : %s",
     "backpackmod.tooltip.how.to.rename": "Sneak + Right click to rename",
 
+    "backpackmod.tooltip.fireproof": "Fire proof (like netherite items)",
+
     "backpackmod.screen.button.close": "Close",
 
     "category.backpackmod.backpack": "BackpackMod",
