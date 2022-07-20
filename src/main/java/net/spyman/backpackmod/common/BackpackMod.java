@@ -39,6 +39,8 @@ public final class BackpackMod implements ModInitializer {
         BackpackRecipes.register();
         BackpackScreenHandlers.register();
 
+        // Backpack custom name packet
+        // [CustomName(Client)] ==> [ItemStack(Server)]
         ServerPlayNetworking.registerGlobalReceiver(PACKET_RENAME_BACKPACK, (server, player, handler, buf, responseSender) -> {
             final boolean def = buf.readBoolean();
             final Hand hand = buf.readEnumConstant(Hand.class);
