@@ -55,6 +55,10 @@ java {
 	withSourcesJar()
 }
 
+runClient {
+	args('--username', 'SpyMan')
+}
+
 jar {
 	from("LICENSE") {
 		rename { "${it}_${project.archivesBaseName}"}

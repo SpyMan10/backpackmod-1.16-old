@@ -5,6 +5,7 @@ import net.minecraft.inventory.Inventories;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.util.Hand;
 import net.minecraft.util.collection.DefaultedList;
 
 public class BackpackInventory implements Inventory {
@@ -13,13 +14,13 @@ public class BackpackInventory implements Inventory {
     private final int height;
     private final DefaultedList<ItemStack> list;
     // ItemStack where nbt-data will be written
-    private final ItemStack container;
+    private final Hand hand;
 
-    public BackpackInventory(int width, int height, ItemStack container) {
+    public BackpackInventory(int width, int height, Hand hand) {
         this.width = width;
         this.height = height;
         this.list = DefaultedList.ofSize(width * height, ItemStack.EMPTY);
-        this.container = container;
+        this.hand = hand;
     }
 
     public int width() {
@@ -28,6 +29,10 @@ public class BackpackInventory implements Inventory {
 
     public int height() {
         return this.height;
+    }
+
+    public Hand hand() {
+        return this.hand;
     }
 
     @Override
@@ -68,7 +73,7 @@ public class BackpackInventory implements Inventory {
 
     @Override
     public void markDirty() {
-        this.write();
+        // Unused
     }
 
     @Override
@@ -85,27 +90,27 @@ public class BackpackInventory implements Inventory {
 
     @Override
     public void onOpen(PlayerEntity player) {
-        this.read();
+        this.read(player.getStackInHand(this.hand));
     }
 
     @Override
     public void onClose(PlayerEntity player) {
-        this.write();
+        this.write(player.getStackInHand(this.hand));
     }
 
     public DefaultedList<ItemStack> list() {
         return this.list;
     }
 
-    public void write() {
-        if (this.container != null && !this.container.isEmpty()) {
-            this.container.getOrCreateNbt().put("BackpackContent", Inventories.writeNbt(new NbtCompound(), this.list, true));
+    public void write(ItemStack container) {
+        if (container != null && !container.isEmpty()) {
+            container.getOrCreateNbt().put("BackpackContent", Inventories.writeNbt(new NbtCompound(), this.list, true));
         }
     }
 
-    public void read() {
-        if (this.container != null && !this.container.isEmpty()) {
-            Inventories.readNbt(this.container.getOrCreateNbt().getCompound("BackpackContent"), this.list);
+    public void read(ItemStack container) {
+        if (container != null && !container.isEmpty()) {
+            Inventories.readNbt(container.getOrCreateNbt().getCompound("BackpackContent"), this.list);
         }
     }
 }

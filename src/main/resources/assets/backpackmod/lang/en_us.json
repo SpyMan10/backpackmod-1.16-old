@@ -22,5 +22,7 @@
     "backpackmod.screen.button.close": "Close",
 
     "category.backpackmod.backpack": "BackpackMod",
-    "key.backpackmod.open": "Open Backpack"
+    "key.backpackmod.open": "Open Backpack",
+
+    "backpackmod.tooltip.fireproof": "Fire proof (like netherite items)"
 }

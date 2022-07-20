@@ -44,7 +44,7 @@ public class BackpackScreenHandler extends ScreenHandler {
 
     @Override
     public boolean canUse(PlayerEntity player) {
-        return true;
+        return !player.getStackInHand(this.inv.hand()).isEmpty();
     }
 
     @Override
