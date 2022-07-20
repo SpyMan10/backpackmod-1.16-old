@@ -18,7 +18,7 @@ the mod require [Fabric Loader](https://fabricmc.net/) and [Fabric API](https://
 
 ## How to configure/add new backpack item ?
 
-Open confguration file `backpackmod.json` located in your configuration folder (Example: `~/.minecraft/config/backpackmod.json`)
+Open confguration file `backpackmod.json` located into your configuration folder (Example: `~/.minecraft/config/backpackmod.json`)
 
 This file look like that :
 
