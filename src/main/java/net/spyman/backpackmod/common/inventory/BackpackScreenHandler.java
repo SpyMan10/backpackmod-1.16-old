@@ -44,16 +44,16 @@ public class BackpackScreenHandler extends ScreenHandler {
 
     @Override
     public boolean canUse(PlayerEntity player) {
-        return true;
+        return !player.getStackInHand(this.inv.hand()).isEmpty();
     }
 
     @Override
     public ItemStack transferSlot(PlayerEntity player, int index) {
-        ItemStack stack = ItemStack.EMPTY;
-        Slot slot = this.slots.get(index);
+        var stack = ItemStack.EMPTY;
+        var slot = this.slots.get(index);
 
         if (slot != null && slot.hasStack()) {
-            final ItemStack stack2 = slot.getStack();
+            final var stack2 = slot.getStack();
             stack = stack2.copy();
 
             if (index < this.inv.size()) {
@@ -76,6 +76,7 @@ public class BackpackScreenHandler extends ScreenHandler {
 
     @Override
     public void onSlotClick(int i, int j, SlotActionType type, PlayerEntity player) {
+        // Block drop action while backpack is opened
         if (type != SlotActionType.CLONE) {
             if (i >= 0 && player.getInventory().selectedSlot + 27 + this.inv.size() == i) {
                 return;
