@@ -8,6 +8,7 @@ import net.minecraft.screen.slot.Slot;
 import net.minecraft.screen.slot.SlotActionType;
 import net.minecraft.util.Identifier;
 import net.spyman.backpackmod.common.init.BackpackScreenHandlers;
+import net.spyman.backpackmod.common.item.BackpackItem;
 
 import static net.spyman.backpackmod.common.BackpackMod.identify;
 
@@ -44,13 +45,14 @@ public class BackpackScreenHandler extends ScreenHandler {
 
     @Override
     public boolean canUse(PlayerEntity player) {
-        return !player.getStackInHand(this.inv.hand()).isEmpty();
+        var stack = player.getStackInHand(this.inv.hand());
+        return !stack.isEmpty() && stack.getItem() instanceof BackpackItem;
     }
 
     @Override
     public ItemStack transferSlot(PlayerEntity player, int index) {
-        ItemStack stack = ItemStack.EMPTY;
-        Slot slot = this.slots.get(index);
+        var stack = ItemStack.EMPTY;
+        var slot = this.slots.get(index);
 
         if (slot != null && slot.hasStack()) {
             final ItemStack stack2 = slot.getStack();
