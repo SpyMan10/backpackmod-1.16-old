@@ -11,7 +11,7 @@ import net.spyman.backpackmod.common.inventory.BackpackScreenHandler;
 public final class BackpackScreenHandlers {
 
     public static final ScreenHandlerType<BackpackScreenHandler> BACKPACK_SCREEN_HANDLER = new ExtendedScreenHandlerType<>((i, pinv, buf) -> {
-        return new BackpackScreenHandler(pinv, i, new BackpackInventory(buf.readInt(), buf.readInt(), buf.readEnumConstant(Hand.class)));
+        return new BackpackScreenHandler(pinv, i, new BackpackInventory(buf.readInt(), buf.readInt(), buf.readEnumConstant(Hand.class), buf.readUuid()));
     });
 
     public static final void register() {

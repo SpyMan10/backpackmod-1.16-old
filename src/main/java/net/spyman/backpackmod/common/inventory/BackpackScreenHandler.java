@@ -45,8 +45,9 @@ public class BackpackScreenHandler extends ScreenHandler {
 
     @Override
     public boolean canUse(PlayerEntity player) {
+        System.out.println("ScreenHandler::canUse(PlayerEntity)");
         var stack = player.getStackInHand(this.inv.hand());
-        return !stack.isEmpty() && stack.getItem() instanceof BackpackItem;
+        return !stack.isEmpty() && stack.getItem() instanceof BackpackItem && BackpackItem.isUUIDMatch(stack, this.inv.uuid());
     }
 
     @Override
@@ -77,14 +78,14 @@ public class BackpackScreenHandler extends ScreenHandler {
     }
 
     @Override
-    public void onSlotClick(int i, int j, SlotActionType type, PlayerEntity player) {
-        if (type != SlotActionType.CLONE) {
-            if (i >= 0 && player.getInventory().selectedSlot + 27 + this.inv.size() == i) {
+    public void onSlotClick(int slotIndex, int button, SlotActionType type, PlayerEntity player) {
+        if (slotIndex >= 0 && player.getInventory().selectedSlot + 27 + this.inv.size() == slotIndex) {
+            if (type != SlotActionType.CLONE) {
                 return;
             }
         }
 
-        super.onSlotClick(i, j, type, player);
+        super.onSlotClick(slotIndex, button, type, player);
     }
 
     @Override

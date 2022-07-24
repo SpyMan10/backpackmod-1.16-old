@@ -13,6 +13,8 @@ import net.minecraft.network.PacketByteBuf;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.text.LiteralText;
+import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
@@ -24,10 +26,13 @@ import net.spyman.backpackmod.common.inventory.BackpackInventory;
 import net.spyman.backpackmod.common.inventory.BackpackScreenHandler;
 
 import java.util.List;
+import java.util.UUID;
 
 import static net.spyman.backpackmod.common.BackpackMod.translate;
 
 public class BackpackItem extends Item {
+
+    public static final String UUID_KEY = "BackpackModItemUID";
 
     private final int width;
     private final int height;
@@ -66,11 +71,52 @@ public class BackpackItem extends Item {
         if (this.isFireproof()) {
             tooltip.add(translate("tooltip.fireproof").formatted(Formatting.GOLD));
         }
+
+
+        if (context.isAdvanced()) {
+            var uuid = getUUID(stack);
+            var display = uuid != null ? uuid.toString() : "<null>";
+            tooltip.add(new LiteralText("UUID: " + display).formatted(Formatting.RED));
+        }
+    }
+
+    public static UUID bindUid(ItemStack stack) {
+        var uuid = UUID.randomUUID();
+        stack.getOrCreateNbt().putUuid(UUID_KEY, uuid);
+
+        return uuid;
+    }
+
+    public static UUID getOrBindUid(ItemStack stack) {
+        var foundUid = getUUID(stack);
+
+        if (foundUid == null) {
+            return bindUid(stack);
+        }
+
+        return foundUid;
+    }
+
+    public static UUID getUUID(ItemStack stack) {
+        try {
+            var uuid = stack.getOrCreateNbt().getUuid(UUID_KEY);
+
+            return uuid;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    public static boolean isUUIDMatch(ItemStack stack, UUID uid) {
+        var uuid = getUUID(stack);
+        return uuid != null && uuid.equals(uid);
     }
 
     public static final void openScreen(PlayerEntity user, Hand hand) {
         final var stack = user.getStackInHand(hand);
-        final var bp = (BackpackItem) user.getStackInHand(hand).getItem();
+        final var bp = (BackpackItem) stack.getItem();
+        // Getting existing UUID or genrated new one
+        var uuid = getOrBindUid(stack);
 
         user.openHandledScreen(new ExtendedScreenHandlerFactory() {
             @Override
@@ -80,7 +126,7 @@ public class BackpackItem extends Item {
 
             @Override
             public ScreenHandler createMenu(int syncId, PlayerInventory inv, PlayerEntity player) {
-                return new BackpackScreenHandler(inv, syncId, new BackpackInventory(bp.width, bp.height, hand));
+                return new BackpackScreenHandler(inv, syncId, new BackpackInventory(bp.width, bp.height, hand, uuid));
             }
 
             @Override
@@ -88,6 +134,7 @@ public class BackpackItem extends Item {
                 buf.writeInt(bp.width);
                 buf.writeInt(bp.height);
                 buf.writeEnumConstant(hand);
+                buf.writeUuid(uuid);
             }
         });
     }
