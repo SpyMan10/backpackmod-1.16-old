@@ -10,7 +10,10 @@ import net.minecraft.util.Identifier;
 import net.spyman.backpackmod.common.init.BackpackScreenHandlers;
 import net.spyman.backpackmod.common.item.BackpackItem;
 
+import java.util.UUID;
+
 import static net.spyman.backpackmod.common.BackpackMod.identify;
+import static net.spyman.backpackmod.common.item.BackpackItem.UUID_KEY;
 
 public class BackpackScreenHandler extends ScreenHandler {
 
@@ -46,7 +49,9 @@ public class BackpackScreenHandler extends ScreenHandler {
     @Override
     public boolean canUse(PlayerEntity player) {
         var stack = player.getStackInHand(this.inv.hand());
-        return !stack.isEmpty() && stack.getItem() instanceof BackpackItem;
+        var uuidMatch = BackpackItem.isUUIDMatch(stack, this.inv.uuid());
+
+        return !stack.isEmpty() && stack.getItem() instanceof BackpackItem && uuidMatch;
     }
 
     @Override
@@ -77,15 +82,14 @@ public class BackpackScreenHandler extends ScreenHandler {
     }
 
     @Override
-    public void onSlotClick(int i, int j, SlotActionType type, PlayerEntity player) {
-        // Block drop action while backpack is opened
-        if (type != SlotActionType.CLONE) {
-            if (i >= 0 && player.getInventory().selectedSlot + 27 + this.inv.size() == i) {
+    public void onSlotClick(int slotIndex, int button, SlotActionType type, PlayerEntity player) {
+        if (slotIndex >= 0 && player.getInventory().selectedSlot + 27 + this.inv.size() == slotIndex) {
+            if (type != SlotActionType.CLONE) {
                 return;
             }
         }
 
-        super.onSlotClick(i, j, type, player);
+        super.onSlotClick(slotIndex, button, type, player);
     }
 
     @Override

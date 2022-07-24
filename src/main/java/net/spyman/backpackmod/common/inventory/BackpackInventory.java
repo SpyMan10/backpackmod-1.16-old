@@ -9,6 +9,8 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.collection.DefaultedList;
 import net.spyman.backpackmod.common.config.BackpackCfgFile;
 
+import java.util.UUID;
+
 public class BackpackInventory implements Inventory {
 
     private final int width;
@@ -16,12 +18,14 @@ public class BackpackInventory implements Inventory {
     private final DefaultedList<ItemStack> list;
     // ItemStack where nbt-data will be written
     private final Hand hand;
+    private final UUID uuid;
 
-    public BackpackInventory(int width, int height, Hand hand) {
+    public BackpackInventory(int width, int height, Hand hand, UUID uuid) {
         this.width = width;
         this.height = height;
         this.list = DefaultedList.ofSize(width * height, ItemStack.EMPTY);
         this.hand = hand;
+        this.uuid = uuid;
     }
 
     public int width() {
@@ -34,6 +38,10 @@ public class BackpackInventory implements Inventory {
 
     public Hand hand() {
         return this.hand;
+    }
+
+    public UUID uuid() {
+        return this.uuid;
     }
 
     @Override
