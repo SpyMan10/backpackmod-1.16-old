@@ -2,27 +2,29 @@ package net.spyman.backpackmod.common.inventory;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.inventory.Inventories;
 import net.minecraft.item.ItemStack;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.Slot;
 import net.minecraft.screen.slot.SlotActionType;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.collection.DefaultedList;
+import net.spyman.backpackmod.common.config.BackpackCfgFile;
 import net.spyman.backpackmod.common.init.BackpackScreenHandlers;
 import net.spyman.backpackmod.common.item.BackpackItem;
 
-import java.util.UUID;
-
 import static net.spyman.backpackmod.common.BackpackMod.identify;
-import static net.spyman.backpackmod.common.item.BackpackItem.UUID_KEY;
 
-public class BackpackScreenHandler extends ScreenHandler {
+public class BackpackScreenHandler extends ScreenHandler implements IBackpackStorage {
 
     public static final Identifier IDENTIFIER = identify("generic_container");
     private final BackpackInventory inv;
+    private final PlayerInventory playerInv;
 
     public BackpackScreenHandler(PlayerInventory playerInv, int sync, BackpackInventory inv) {
         super(BackpackScreenHandlers.BACKPACK_SCREEN_HANDLER, sync);
         this.inv = inv;
+        this.playerInv = playerInv;
 
         // Backpack inventory
         for (int n = 0; n < this.inv.height(); ++n) {
@@ -43,6 +45,7 @@ public class BackpackScreenHandler extends ScreenHandler {
             this.addSlot(new Slot(playerInv, n, 8 + (this.inv.width() * 18 - 162) / 2 + n * 18, 89 + this.inv.height() * 18));
         }
 
+        this.inv.storage(this);
         this.inv.onOpen(playerInv.player);
     }
 
@@ -100,5 +103,19 @@ public class BackpackScreenHandler extends ScreenHandler {
 
     public BackpackInventory inventory() {
         return this.inv;
+    }
+
+    @Override
+    public void write(DefaultedList<ItemStack> stacks) {
+        var player = this.playerInv.player;
+        var stack = player.getStackInHand(this.inv.hand());
+        Inventories.writeNbt(stack.getOrCreateNbt().getCompound(BackpackCfgFile.config().nbtTagName()), stacks);
+    }
+
+    @Override
+    public void read(DefaultedList<ItemStack> stacks) {
+        var player = this.playerInv.player;
+        var stack = player.getStackInHand(this.inv.hand());
+        Inventories.readNbt(stack.getOrCreateNbt().getCompound(BackpackCfgFile.config().nbtTagName()), stacks);
     }
 }

@@ -4,10 +4,8 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventories;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.Hand;
 import net.minecraft.util.collection.DefaultedList;
-import net.spyman.backpackmod.common.config.BackpackCfgFile;
 
 import java.util.UUID;
 
@@ -18,7 +16,11 @@ public class BackpackInventory implements Inventory {
     private final DefaultedList<ItemStack> list;
     // ItemStack where nbt-data will be written
     private final Hand hand;
+
     private final UUID uuid;
+
+    // Inventory stacks storage interface
+    private IBackpackStorage storage;
 
     public BackpackInventory(int width, int height, Hand hand, UUID uuid) {
         this.width = width;
@@ -26,6 +28,7 @@ public class BackpackInventory implements Inventory {
         this.list = DefaultedList.ofSize(width * height, ItemStack.EMPTY);
         this.hand = hand;
         this.uuid = uuid;
+        this.storage = IBackpackStorage.EMPTY;
     }
 
     public int width() {
@@ -42,6 +45,14 @@ public class BackpackInventory implements Inventory {
 
     public UUID uuid() {
         return this.uuid;
+    }
+
+    public IBackpackStorage storage() {
+        return this.storage;
+    }
+
+    public void storage(IBackpackStorage storage) {
+        this.storage = storage;
     }
 
     @Override
@@ -82,7 +93,7 @@ public class BackpackInventory implements Inventory {
 
     @Override
     public void markDirty() {
-        // Unused
+        this.storage.write(this.list);
     }
 
     @Override
@@ -99,27 +110,15 @@ public class BackpackInventory implements Inventory {
 
     @Override
     public void onOpen(PlayerEntity player) {
-        this.read(player.getStackInHand(this.hand));
+        this.storage.read(this.list);
     }
 
     @Override
     public void onClose(PlayerEntity player) {
-        this.write(player.getStackInHand(this.hand));
+        // Unused
     }
 
     public DefaultedList<ItemStack> list() {
         return this.list;
-    }
-
-    public void write(ItemStack container) {
-        if (container != null && !container.isEmpty()) {
-            container.getOrCreateNbt().put(BackpackCfgFile.config().nbtTagName(), Inventories.writeNbt(new NbtCompound(), this.list, true));
-        }
-    }
-
-    public void read(ItemStack container) {
-        if (container != null && !container.isEmpty()) {
-            Inventories.readNbt(container.getOrCreateNbt().getCompound(BackpackCfgFile.config().nbtTagName()), this.list);
-        }
     }
 }
