@@ -4,6 +4,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventories;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.Slot;
 import net.minecraft.screen.slot.SlotActionType;
@@ -25,6 +26,10 @@ public class BackpackScreenHandler extends ScreenHandler implements IBackpackSto
         this.inv = inv;
         this.playerInv = playerInv;
 
+        if (!playerInv.player.getWorld().isClient()) {
+            this.inv.storage(this);
+        }
+
         // Backpack inventory
         for (int n = 0; n < this.inv.height(); ++n) {
             for (int m = 0; m < this.inv.width(); ++m) {
@@ -43,8 +48,6 @@ public class BackpackScreenHandler extends ScreenHandler implements IBackpackSto
         for (int n = 0; n < 9; ++n) {
             this.addSlot(new Slot(playerInv, n, 8 + (this.inv.width() * 18 - 162) / 2 + n * 18, 89 + this.inv.height() * 18));
         }
-
-        this.inv.storage(this);
 
         this.inv.onOpen(playerInv.player);
     }
@@ -107,7 +110,9 @@ public class BackpackScreenHandler extends ScreenHandler implements IBackpackSto
     public void write(DefaultedList<ItemStack> stacks) {
         var player = this.playerInv.player;
         var stack = player.getStackInHand(this.inv.hand());
-        Inventories.writeNbt(stack.getOrCreateNbt().getCompound("BackpackContent"), stacks);
+        var nbt = new NbtCompound();
+        Inventories.writeNbt(nbt, stacks, true);
+        stack.getOrCreateNbt().put("BackpackContent", nbt);
     }
 
     @Override
