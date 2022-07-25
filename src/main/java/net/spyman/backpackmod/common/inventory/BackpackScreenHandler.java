@@ -2,24 +2,34 @@ package net.spyman.backpackmod.common.inventory;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.inventory.Inventories;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.Slot;
 import net.minecraft.screen.slot.SlotActionType;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.collection.DefaultedList;
+import net.spyman.backpackmod.common.config.BackpackCfgFile;
 import net.spyman.backpackmod.common.init.BackpackScreenHandlers;
 import net.spyman.backpackmod.common.item.BackpackItem;
 
 import static net.spyman.backpackmod.common.BackpackMod.identify;
 
-public class BackpackScreenHandler extends ScreenHandler {
+public class BackpackScreenHandler extends ScreenHandler implements IBackpackStorage {
 
     public static final Identifier IDENTIFIER = identify("generic_container");
     private final BackpackInventory inv;
+    private final PlayerInventory playerInv;
 
     public BackpackScreenHandler(PlayerInventory playerInv, int sync, BackpackInventory inv) {
         super(BackpackScreenHandlers.BACKPACK_SCREEN_HANDLER, sync);
         this.inv = inv;
+        this.playerInv = playerInv;
+
+        if (!playerInv.player.getWorld().isClient()) {
+            this.inv.storage(this);
+        }
 
         // Backpack inventory
         for (int n = 0; n < this.inv.height(); ++n) {
@@ -46,7 +56,9 @@ public class BackpackScreenHandler extends ScreenHandler {
     @Override
     public boolean canUse(PlayerEntity player) {
         var stack = player.getStackInHand(this.inv.hand());
-        return !stack.isEmpty() && stack.getItem() instanceof BackpackItem;
+        var uuidMatch = BackpackItem.isUUIDMatch(stack, this.inv.uuid());
+
+        return !stack.isEmpty() && stack.getItem() instanceof BackpackItem && uuidMatch;
     }
 
     @Override
@@ -77,15 +89,14 @@ public class BackpackScreenHandler extends ScreenHandler {
     }
 
     @Override
-    public void onSlotClick(int i, int j, SlotActionType type, PlayerEntity player) {
-        // Block drop action while backpack is opened
-        if (type != SlotActionType.CLONE) {
-            if (i >= 0 && player.getInventory().selectedSlot + 27 + this.inv.size() == i) {
+    public void onSlotClick(int slotIndex, int button, SlotActionType type, PlayerEntity player) {
+        if (slotIndex >= 0 && player.getInventory().selectedSlot + 27 + this.inv.size() == slotIndex) {
+            if (type != SlotActionType.CLONE) {
                 return;
             }
         }
 
-        super.onSlotClick(i, j, type, player);
+        super.onSlotClick(slotIndex, button, type, player);
     }
 
     @Override
@@ -96,5 +107,21 @@ public class BackpackScreenHandler extends ScreenHandler {
 
     public BackpackInventory inventory() {
         return this.inv;
+    }
+
+    @Override
+    public void write(DefaultedList<ItemStack> stacks) {
+        var player = this.playerInv.player;
+        var stack = player.getStackInHand(this.inv.hand());
+        var nbt = new NbtCompound();
+        Inventories.writeNbt(nbt, stacks, true);
+        stack.getOrCreateNbt().put(BackpackCfgFile.config().nbtTagName(), nbt);
+    }
+
+    @Override
+    public void read(DefaultedList<ItemStack> stacks) {
+        var player = this.playerInv.player;
+        var stack = player.getStackInHand(this.inv.hand());
+        Inventories.readNbt(stack.getOrCreateNbt().getCompound(BackpackCfgFile.config().nbtTagName()), stacks);
     }
 }
