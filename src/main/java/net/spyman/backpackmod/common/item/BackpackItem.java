@@ -1,5 +1,6 @@
 package net.spyman.backpackmod.common.item;
 
+import dev.emi.trinkets.api.Trinket;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
@@ -32,7 +33,7 @@ import java.util.UUID;
 
 import static net.spyman.backpackmod.common.BackpackMod.translate;
 
-public class BackpackItem extends Item {
+public class BackpackItem extends Item implements Trinket {
 
     public static final String UUID_KEY = "BackpackModItemUID";
 
