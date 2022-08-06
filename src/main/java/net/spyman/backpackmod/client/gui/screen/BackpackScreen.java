@@ -15,9 +15,9 @@ public class BackpackScreen extends HandledScreen<BackpackScreenHandler> {
 
     public BackpackScreen(BackpackScreenHandler handler, PlayerInventory inventory, Text title) {
         super(handler, inventory, title);
-        this.backgroundWidth = handler.inventory().width() * 18 + 17;
-        this.backgroundHeight = (handler.inventory().height() + 4) * 18 + 41;
-        this.playerInventoryTitleY = handler.inventory().height() * 18 + 20;
+        this.backgroundWidth = handler.getWidth() * 18 + 17;
+        this.backgroundHeight = (handler.getHeight() + 4) * 18 + 41;
+        this.playerInventoryTitleY = handler.getHeight() * 18 + 20;
     }
 
     @Override
@@ -34,25 +34,25 @@ public class BackpackScreen extends HandledScreen<BackpackScreenHandler> {
         this.drawTexture(matrices, 0, 0, 0, 0, 7, 17);
 
         // Top
-        drawTexture(matrices, 7, 0, handler.inventory().width() * 18, 17, 7, 0, 1, 17, 256, 256);
+        drawTexture(matrices, 7, 0, handler.getWidth() * 18, 17, 7, 0, 1, 17, 256, 256);
 
         // Upper-right corner
-        this.drawTexture(matrices, 7 + handler.inventory().width() * 18, 0, 169, 0, 7, 17);
+        this.drawTexture(matrices, 7 + handler.getWidth() * 18, 0, 169, 0, 7, 17);
 
         // Left
-        drawTexture(matrices, 0, 17, 7, (handler.inventory().height() + 4) * 18 + 22, 0, 17, 7, 1, 256, 256);
+        drawTexture(matrices, 0, 17, 7, (handler.getHeight() + 4) * 18 + 22, 0, 17, 7, 1, 256, 256);
 
         // Lower-left corner
-        this.drawTexture(matrices, 0, (handler.inventory().height() + 4) * 18 + 34, 0, 215, 7, 7);
+        this.drawTexture(matrices, 0, (handler.getHeight() + 4) * 18 + 34, 0, 215, 7, 7);
 
         // Lower
-        drawTexture(matrices, 7, (handler.inventory().height() + 4) * 18 + 34, handler.inventory().width() * 18, 7, 7, 215, 1, 7, 256, 256);
+        drawTexture(matrices, 7, (handler.getHeight() + 4) * 18 + 34, handler.getWidth() * 18, 7, 7, 215, 1, 7, 256, 256);
 
         // Lower-right corner
-        this.drawTexture(matrices, (handler.inventory().width() * 18 + 7), (handler.inventory().height() + 4) * 18 + 34, 169, 215, 7, 7);
+        this.drawTexture(matrices, (handler.getWidth() * 18 + 7), (handler.getHeight() + 4) * 18 + 34, 169, 215, 7, 7);
 
         // Right
-        drawTexture(matrices, (handler.inventory().width() * 18 + 7), 17, 7, (handler.inventory().height() + 4) * 18 + 17, 169, 17, 7, 1, 256, 256);
+        drawTexture(matrices, (handler.getWidth() * 18 + 7), 17, 7, (handler.getHeight() + 4) * 18 + 17, 169, 17, 7, 1, 256, 256);
 
         // Background fill
         fill(matrices, 7, 17, this.backgroundWidth - 10, this.backgroundHeight - 7, 0xFFC6C6C6);
