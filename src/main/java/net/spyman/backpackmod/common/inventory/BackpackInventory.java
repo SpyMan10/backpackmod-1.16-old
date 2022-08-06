@@ -2,123 +2,75 @@ package net.spyman.backpackmod.common.inventory;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventories;
-import net.minecraft.inventory.Inventory;
+import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Hand;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.collection.DefaultedList;
+import net.spyman.backpackmod.common.config.BackpackCfgFile;
 
-import java.util.UUID;
+public class BackpackInventory extends SimpleInventory {
+    protected final ItemStack itemStack;
+    protected final int SIZE;
 
-public class BackpackInventory implements Inventory {
+    public BackpackInventory(ItemStack stack, int SIZE) {
+        super(getStacks(stack, SIZE).toArray(new ItemStack[SIZE]));
+        itemStack = stack;
+        this.SIZE = SIZE;
 
-    private final int width;
-    private final int height;
-    private final DefaultedList<ItemStack> list;
-    // ItemStack where nbt-data will be written
-    private final Hand hand;
-
-    private final UUID uuid;
-
-    // Inventory stacks storage interface
-    private IBackpackStorage storage;
-
-    public BackpackInventory(int width, int height, Hand hand, UUID uuid) {
-        this.width = width;
-        this.height = height;
-        this.list = DefaultedList.ofSize(width * height, ItemStack.EMPTY);
-        this.hand = hand;
-        this.uuid = uuid;
-        this.storage = IBackpackStorage.EMPTY;
     }
 
-    public int width() {
-        return this.width;
+    public ItemStack getHolderStack() {
+        return itemStack;
     }
 
-    public int height() {
-        return this.height;
+    public static String getNBTTag() {
+        return BackpackCfgFile.config().nbtTagName();
     }
 
-    public Hand hand() {
-        return this.hand;
-    }
-
-    public UUID uuid() {
-        return this.uuid;
-    }
-
-    public IBackpackStorage storage() {
-        return this.storage;
-    }
-
-    public void storage(IBackpackStorage storage) {
-        this.storage = storage;
-    }
-
-    @Override
-    public int size() {
-        return this.width * this.height;
-    }
-
-    @Override
-    public boolean isEmpty() {
-        for (ItemStack stack : this.list) {
-            if (!stack.isEmpty()) return false;
+    public static DefaultedList<ItemStack> getStacks(ItemStack usedStack, int SIZE) {
+        NbtCompound compoundTag = usedStack.getSubNbt(getNBTTag());
+        DefaultedList<ItemStack> itemStacks = DefaultedList.ofSize(SIZE, ItemStack.EMPTY);
+        if (compoundTag != null && compoundTag.contains("Items", 9)) {
+            Inventories.readNbt(compoundTag, itemStacks);
         }
-
-        return true;
-    }
-
-    @Override
-    public ItemStack getStack(int slot) {
-        return this.list.get(slot);
-    }
-
-    @Override
-    public ItemStack removeStack(int slot, int amount) {
-        return Inventories.splitStack(this.list, slot, amount);
-    }
-
-    @Override
-    public ItemStack removeStack(int slot) {
-        final ItemStack stack = this.list.remove(slot);
-        this.setStack(slot, ItemStack.EMPTY);
-        return stack;
-    }
-
-    @Override
-    public void setStack(int slot, ItemStack stack) {
-        this.list.set(slot, stack);
+        return itemStacks;
     }
 
     @Override
     public void markDirty() {
-        this.storage.write(this.list);
-    }
+        super.markDirty();
+        NbtCompound blockEntityTag = itemStack.getSubNbt(getNBTTag());
+        if (blockEntityTag == null)
+            blockEntityTag = itemStack.getOrCreateSubNbt(getNBTTag());
 
-    @Override
-    public boolean canPlayerUse(PlayerEntity player) {
-        return true;
-    }
+        if (isEmpty()) {
+            if (blockEntityTag.contains("Items")) blockEntityTag.remove("Items");
+        } else {
+            DefaultedList<ItemStack> itemStacks = DefaultedList.ofSize(SIZE, ItemStack.EMPTY);
+            for (int i = 0; i < size(); i++) {
+                itemStacks.set(i, getStack(i));
+            }
+            Inventories.writeNbt(blockEntityTag, itemStacks);
+        }
 
-    @Override
-    public void clear() {
-        for (int i = 0; i < this.list.size(); i++) {
-            this.removeStack(i);
+        if (shouldDeleteNBT(blockEntityTag)) {
+            itemStack.removeSubNbt(getNBTTag());
         }
     }
 
-    @Override
-    public void onOpen(PlayerEntity player) {
-        this.storage.read(this.list);
+    public boolean shouldDeleteNBT(NbtCompound blockEntityTag) {
+        if (!blockEntityTag.contains("Items"))
+            return blockEntityTag.getKeys().size() == 0;
+        return isEmpty();
     }
 
     @Override
-    public void onClose(PlayerEntity player) {
-        // Unused
-    }
-
-    public DefaultedList<ItemStack> list() {
-        return this.list;
+    public void onClose(PlayerEntity playerEntity_1) {
+        if (itemStack.getCount() > 1) {
+            int count = itemStack.getCount();
+            itemStack.setCount(1);
+            playerEntity_1.giveItemStack(new ItemStack(itemStack.getItem(), count - 1));
+        }
+        markDirty();
     }
 }

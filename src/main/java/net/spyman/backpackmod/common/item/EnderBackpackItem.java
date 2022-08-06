@@ -24,14 +24,18 @@ public class EnderBackpackItem extends Item {
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         if (!world.isClient()) {
             if (user.getEnderChestInventory() != null) {
-                user.openHandledScreen(new SimpleNamedScreenHandlerFactory((i, playerInv, player) -> {
-                    return GenericContainerScreenHandler.createGeneric9x3(i, playerInv, user.getEnderChestInventory());
-                }, CONTAINER_NAME));
+                openScreen(user, user.getStackInHand(hand));
             }
         } else {
             user.playSound(SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 1.0F, 1.0F);
         }
 
         return TypedActionResult.consume(user.getStackInHand(hand));
+    }
+
+    public static void openScreen(PlayerEntity user, ItemStack stack) {
+        user.openHandledScreen(new SimpleNamedScreenHandlerFactory((i, playerInv, player) -> {
+            return GenericContainerScreenHandler.createGeneric9x3(i, playerInv, user.getEnderChestInventory());
+        }, CONTAINER_NAME));
     }
 }
