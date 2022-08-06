@@ -49,7 +49,7 @@ public class BackpackItem extends Item {
 
         if (!user.isSneaking()) {
             if (!world.isClient()) {
-                openScreen(user, hand);
+                openScreen(user, user.getStackInHand(hand));
             } else {
                 user.playSound(SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 1.0F, 1.0F);
             }
@@ -87,7 +87,7 @@ public class BackpackItem extends Item {
         return uuid;
     }
 
-    public static UUID getOrBindUid(ItemStack stack) {
+    public static UUID getOrBindUUID(ItemStack stack) {
         var foundUid = getUUID(stack);
 
         if (foundUid == null) {
@@ -112,11 +112,22 @@ public class BackpackItem extends Item {
         return uuid != null && uuid.equals(uid);
     }
 
-    public static final void openScreen(PlayerEntity user, Hand hand) {
-        final var stack = user.getStackInHand(hand);
+    public static int getBPWidth(ItemStack stack){
+       return ((BackpackItem) stack.getItem()).width;
+    }
+
+    public static int getBPHeight(ItemStack stack){
+        return ((BackpackItem) stack.getItem()).height;
+    }
+
+    public static int getBPInvSize(ItemStack stack){
+        return getBPHeight(stack) * getBPWidth(stack);
+    }
+
+    public static void openScreen(PlayerEntity user, ItemStack stack) {
         final var bp = (BackpackItem) stack.getItem();
-        // Getting existing UUID or genrated new one
-        var uuid = getOrBindUid(stack);
+        // Getting existing UUID or generated new one
+        var uuid = getOrBindUUID(stack);
 
         user.openHandledScreen(new ExtendedScreenHandlerFactory() {
             @Override
@@ -126,21 +137,20 @@ public class BackpackItem extends Item {
 
             @Override
             public ScreenHandler createMenu(int syncId, PlayerInventory inv, PlayerEntity player) {
-                return new BackpackScreenHandler(inv, syncId, new BackpackInventory(bp.width, bp.height, hand, uuid));
+                return new BackpackScreenHandler(syncId, inv, bp.width, bp.height, uuid, stack);
             }
 
             @Override
             public void writeScreenOpeningData(ServerPlayerEntity serverPlayerEntity, PacketByteBuf buf) {
                 buf.writeInt(bp.width);
                 buf.writeInt(bp.height);
-                buf.writeEnumConstant(hand);
                 buf.writeUuid(uuid);
             }
         });
     }
 
     @Environment(EnvType.CLIENT)
-    public static final void openRenameScreen(Hand hand, Text name) {
+    public static void openRenameScreen(Hand hand, Text name) {
         MinecraftClient.getInstance().setScreen(new BackpackRenameScreen(hand, name));
     }
 }

@@ -15,13 +15,15 @@ public class BackpackSlot extends Slot {
 
     @Override
     public boolean canInsert(ItemStack stack) {
+        return checkCanInsert(stack);
+    }
+
+    public static boolean checkCanInsert(ItemStack stack) {
         if (stack.getItem() instanceof BackpackItem) {
             return false;
         }
 
-        if (stack.getItem() instanceof BlockItem) {
-            final BlockItem itemb = (BlockItem) stack.getItem();
-
+        if (stack.getItem() instanceof final BlockItem itemb) {
             return !(itemb.getBlock() instanceof ShulkerBoxBlock);
         }
 

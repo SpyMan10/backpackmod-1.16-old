@@ -2,52 +2,58 @@ package net.spyman.backpackmod.common.inventory;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.Inventories;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NbtCompound;
+import net.minecraft.item.Items;
+import net.minecraft.network.PacketByteBuf;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.Slot;
 import net.minecraft.screen.slot.SlotActionType;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.collection.DefaultedList;
-import net.spyman.backpackmod.common.config.BackpackCfgFile;
 import net.spyman.backpackmod.common.init.BackpackScreenHandlers;
 import net.spyman.backpackmod.common.item.BackpackItem;
 
+import java.util.UUID;
+
 import static net.spyman.backpackmod.common.BackpackMod.identify;
 
-public class BackpackScreenHandler extends ScreenHandler implements IBackpackStorage {
+public class BackpackScreenHandler extends ScreenHandler {
 
     public static final Identifier IDENTIFIER = identify("generic_container");
     private final BackpackInventory inv;
     private final PlayerInventory playerInv;
+    private final int width;
+    private final int height;
+    private final UUID uuid;
 
-    public BackpackScreenHandler(PlayerInventory playerInv, int sync, BackpackInventory inv) {
-        super(BackpackScreenHandlers.BACKPACK_SCREEN_HANDLER, sync);
-        this.inv = inv;
+    //gets called clientside. The real inv does not matter
+    public BackpackScreenHandler(int syncId, PlayerInventory playerInventory, PacketByteBuf packetByteBuf) {
+        this(syncId, playerInventory, packetByteBuf.readInt(), packetByteBuf.readInt(), packetByteBuf.readUuid(), Items.AIR.getDefaultStack());
+    }
+
+    public BackpackScreenHandler(int syncId, PlayerInventory playerInv, int width, int height, UUID uuid, ItemStack stack) {
+        super(BackpackScreenHandlers.BACKPACK_SCREEN_HANDLER, syncId);
+        this.inv = new BackpackInventory(stack, width * height);
         this.playerInv = playerInv;
-
-        if (!playerInv.player.getWorld().isClient()) {
-            this.inv.storage(this);
-        }
-
+        this.width = width;
+        this.height = height;
+        this.uuid = uuid;
         // Backpack inventory
-        for (int n = 0; n < this.inv.height(); ++n) {
-            for (int m = 0; m < this.inv.width(); ++m) {
-                this.addSlot(new BackpackSlot(inv, m + n * this.inv.width(), 8 + m * 18, 18 + n * 18));
+        for (int n = 0; n < height; ++n) {
+            for (int m = 0; m < width; ++m) {
+                this.addSlot(new BackpackSlot(inv, m + n * width, 8 + m * 18, 18 + n * 18));
             }
         }
 
         // Player inventory
         for (int n = 0; n < 3; ++n) {
             for (int m = 0; m < 9; ++m) {
-                this.addSlot(new Slot(playerInv, m + n * 9 + 9, 8 + (this.inv.width() * 18 - 162) / 2 + m * 18, 31 + (this.inv.height() + n) * 18));
+                this.addSlot(new Slot(playerInv, m + n * 9 + 9, 8 + (width * 18 - 162) / 2 + m * 18, 31 + (height + n) * 18));
             }
         }
 
         // Player hotbar
         for (int n = 0; n < 9; ++n) {
-            this.addSlot(new Slot(playerInv, n, 8 + (this.inv.width() * 18 - 162) / 2 + n * 18, 89 + this.inv.height() * 18));
+            this.addSlot(new Slot(playerInv, n, 8 + (width * 18 - 162) / 2 + n * 18, 89 + height * 18));
         }
 
         this.inv.onOpen(playerInv.player);
@@ -55,8 +61,10 @@ public class BackpackScreenHandler extends ScreenHandler implements IBackpackSto
 
     @Override
     public boolean canUse(PlayerEntity player) {
-        var stack = player.getStackInHand(this.inv.hand());
-        var uuidMatch = BackpackItem.isUUIDMatch(stack, this.inv.uuid());
+        if (player.world.isClient) return true;
+
+        var stack = inv.getHolderStack();
+        var uuidMatch = BackpackItem.isUUIDMatch(stack, this.uuid);
 
         return !stack.isEmpty() && stack.getItem() instanceof BackpackItem && uuidMatch;
     }
@@ -95,7 +103,6 @@ public class BackpackScreenHandler extends ScreenHandler implements IBackpackSto
                 return;
             }
         }
-
         super.onSlotClick(slotIndex, button, type, player);
     }
 
@@ -105,23 +112,11 @@ public class BackpackScreenHandler extends ScreenHandler implements IBackpackSto
         this.inv.onClose(player);
     }
 
-    public BackpackInventory inventory() {
-        return this.inv;
+    public int getWidth() {
+        return width;
     }
 
-    @Override
-    public void write(DefaultedList<ItemStack> stacks) {
-        var player = this.playerInv.player;
-        var stack = player.getStackInHand(this.inv.hand());
-        var nbt = new NbtCompound();
-        Inventories.writeNbt(nbt, stacks, true);
-        stack.getOrCreateNbt().put(BackpackCfgFile.config().nbtTagName(), nbt);
-    }
-
-    @Override
-    public void read(DefaultedList<ItemStack> stacks) {
-        var player = this.playerInv.player;
-        var stack = player.getStackInHand(this.inv.hand());
-        Inventories.readNbt(stack.getOrCreateNbt().getCompound(BackpackCfgFile.config().nbtTagName()), stacks);
+    public int getHeight() {
+        return height;
     }
 }

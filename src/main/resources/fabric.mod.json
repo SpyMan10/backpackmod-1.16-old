@@ -20,6 +20,9 @@
         ],
         "client": [
             "net.spyman.backpackmod.client.BackpackModClient"
+        ],
+        "quickshulker": [
+            "net.spyman.backpackmod.common.compat.QuickshulkerCompat"
         ]
     },
     "mixins": [
