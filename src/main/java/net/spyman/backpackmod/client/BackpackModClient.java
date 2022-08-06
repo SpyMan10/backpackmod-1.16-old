@@ -3,7 +3,6 @@ package net.spyman.backpackmod.client;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.fabricmc.fabric.api.client.screenhandler.v1.ScreenRegistry;
 import net.minecraft.client.gui.screen.ingame.HandledScreens;
 import net.spyman.backpackmod.client.gui.screen.BackpackScreen;
 import net.spyman.backpackmod.common.init.BackpackScreenHandlers;
