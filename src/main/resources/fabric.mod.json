@@ -1,40 +1,39 @@
- {
-    "schemaVersion": 1,
-    "id": "backpackmod",
-    "version": "${version}",
-    "name": "Backpack Mod",
-    "description": "Fully configurable backpack items",
-    "authors": [
-        "SpyMan"
+{
+  "schemaVersion": 1,
+  "id": "backpackmod",
+  "version": "${version}",
+  "name": "Backpack Mod",
+  "description": "Fully configurable backpack items",
+  "authors": [
+    "SpyMan"
+  ],
+  "contact": {
+    "sources": "https://github.com/SpyMan10/backpackmod",
+    "issues": "https://github.com/SpyMan10/backpackmod/issues"
+  },
+  "license": "MIT",
+  "icon": "assets/backpackmod/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "net.spyman.backpackmod.common.BackpackMod"
     ],
-    "contact": {
-        "sources": "https://github.com/SpyMan10/backpackmod",
-        "issues": "https://github.com/SpyMan10/backpackmod/issues"
-    },
-    "license": "MIT",
-    "icon": "assets/backpackmod/icon.png",
-    "environment": "*",
-    "entrypoints": {
-        "main": [
-            "net.spyman.backpackmod.common.BackpackMod"
-        ],
-        "client": [
-            "net.spyman.backpackmod.client.BackpackModClient"
-        ],
-        "quickshulker": [
-            "net.spyman.backpackmod.common.compat.QuickshulkerCompat"
-        ]
-    },
-    "mixins": [
-        "backpackmod.mixins.json"
+    "client": [
+      "net.spyman.backpackmod.client.BackpackModClient"
     ],
-    "depends": {
-        "fabricloader": ">=0.13.3",
-        "fabric": "*",
-        "minecraft": "1.19.x",
-        "java": ">=17"
-    },
-    "suggests": {
-
-    }
+    "quickshulker": [
+      "net.spyman.backpackmod.common.compat.QuickshulkerCompat"
+    ]
+  },
+  "mixins": [
+    "backpackmod.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.13.3",
+    "fabric": "*",
+    "minecraft": "1.19.x",
+    "java": ">=17"
+  },
+  "suggests": {
+  }
 }

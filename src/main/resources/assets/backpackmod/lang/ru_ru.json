@@ -1,21 +1,16 @@
 {
-    "itemGroup.backpackmod.group": "Backpack Mod",
-
-    "item.backpackmod.leather_backpack": "Кожаный рюкзак",
-    "item.backpackmod.iron_backpack": "Железный рюкзак",
-    "item.backpackmod.gold_backpack": "Золотой рюкзак",
-    "item.backpackmod.diamond_backpack": "Алмазный рюкзак",
-    "item.backpackmod.netherite_backpack": "Незеритовый рюкзак",
-
-    "item.backpackmod.ender_backpack": "Ендер рюкзак",
-
-    "backpackmod.tooltip.size": "Размер: %sx%s (%s) слота",
-
-    "backpackmod.screen.title.rename": "Переименовать рюкзак",
-    "backpackmod.screen.button.default.name": "Удалить имя",
-    "backpackmod.screen.button.rename": "Переименовать",
-    "backpackmod.screen.rename.max.length": "максимальная длина : %s",
-    "backpackmod.tooltip.how.to.rename": "Скрытность + щелкните правой кнопкой мыши, чтобы переименовать",
-
-    "backpackmod.screen.button.close": "Закрыть"
+  "itemGroup.backpackmod.group": "Backpack Mod",
+  "item.backpackmod.leather_backpack": "Кожаный рюкзак",
+  "item.backpackmod.iron_backpack": "Железный рюкзак",
+  "item.backpackmod.gold_backpack": "Золотой рюкзак",
+  "item.backpackmod.diamond_backpack": "Алмазный рюкзак",
+  "item.backpackmod.netherite_backpack": "Незеритовый рюкзак",
+  "item.backpackmod.ender_backpack": "Ендер рюкзак",
+  "backpackmod.tooltip.size": "Размер: %sx%s (%s) слота",
+  "backpackmod.screen.title.rename": "Переименовать рюкзак",
+  "backpackmod.screen.button.default.name": "Удалить имя",
+  "backpackmod.screen.button.rename": "Переименовать",
+  "backpackmod.screen.rename.max.length": "максимальная длина : %s",
+  "backpackmod.tooltip.how.to.rename": "Скрытность + щелкните правой кнопкой мыши, чтобы переименовать",
+  "backpackmod.screen.button.close": "Закрыть"
 }

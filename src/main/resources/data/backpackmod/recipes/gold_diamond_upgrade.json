@@ -1,24 +1,24 @@
 {
-    "type": "backpackmod:shaped_copy_nbt",
-    "group": "backpackmod",
-    "pattern": [
-        "###",
-        "CBC",
-        "###"
-    ],
-    "key": {
-        "#": {
-            "item": "minecraft:diamond"
-        },
-        "B": {
-            "item": "backpackmod:gold_backpack"
-        },
-        "C": {
-            "item": "minecraft:chest"
-        }
+  "type": "backpackmod:shaped_copy_nbt",
+  "group": "backpackmod",
+  "pattern": [
+    "###",
+    "CBC",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:diamond"
     },
-    "result": {
-        "item": "backpackmod:diamond_backpack"
+    "B": {
+      "item": "backpackmod:gold_backpack"
     },
-    "target_slot": 4
+    "C": {
+      "item": "minecraft:chest"
+    }
+  },
+  "result": {
+    "item": "backpackmod:diamond_backpack"
+  },
+  "target_slot": 4
 }

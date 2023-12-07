@@ -1,24 +1,24 @@
 {
-    "type": "backpackmod:shaped_copy_nbt",
-    "group": "backpackmod",
-    "pattern": [
-        "###",
-        "CBC",
-        "###"
-    ],
-    "key": {
-        "#": {
-            "item": "minecraft:amethyst_shard"
-        },
-        "B": {
-            "item": "backpackmod:iron_backpack"
-        },
-        "C": {
-            "item": "minecraft:chest"
-        }
+  "type": "backpackmod:shaped_copy_nbt",
+  "group": "backpackmod",
+  "pattern": [
+    "###",
+    "CBC",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:amethyst_shard"
     },
-    "result": {
-        "item": "backpackmod:amethyst_backpack"
+    "B": {
+      "item": "backpackmod:iron_backpack"
     },
-    "target_slot": 4
+    "C": {
+      "item": "minecraft:chest"
+    }
+  },
+  "result": {
+    "item": "backpackmod:amethyst_backpack"
+  },
+  "target_slot": 4
 }

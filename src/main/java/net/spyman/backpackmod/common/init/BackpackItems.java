@@ -10,11 +10,11 @@ import static net.spyman.backpackmod.common.BackpackMod.identify;
 
 public final class BackpackItems {
 
-    public static final void register() {
-        BackpackCfgFile.config().backpacks().forEach(e -> Registry.register(Registry.ITEM, identify(e.name()), e.asItem()));
+  public static final void register() {
+    BackpackCfgFile.config().backpacks().forEach(e -> Registry.register(Registry.ITEM, identify(e.name()), e.asItem()));
 
-        if (BackpackCfgFile.config().enderBackpackEnable()) {
-            Registry.register(Registry.ITEM, identify("ender_backpack"), new EnderBackpackItem(new Item.Settings().group(GROUP)));
-        }
+    if (BackpackCfgFile.config().enderBackpackEnable()) {
+      Registry.register(Registry.ITEM, identify("ender_backpack"), new EnderBackpackItem(new Item.Settings().group(GROUP)));
     }
+  }
 }

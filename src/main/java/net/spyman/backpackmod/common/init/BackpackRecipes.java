@@ -8,9 +8,9 @@ import static net.spyman.backpackmod.common.BackpackMod.identify;
 
 public final class BackpackRecipes {
 
-    public static final RecipeSerializer<ShapedRecipeCopyNBT> BACKPACK_UPGRADE = new ShapedRecipeCopyNBT.Serializer();
+  public static final RecipeSerializer<ShapedRecipeCopyNBT> BACKPACK_UPGRADE = new ShapedRecipeCopyNBT.Serializer();
 
-    public static final void register() {
-        Registry.register(Registry.RECIPE_SERIALIZER, identify("shaped_copy_nbt"), BACKPACK_UPGRADE);
-    }
+  public static final void register() {
+    Registry.register(Registry.RECIPE_SERIALIZER, identify("shaped_copy_nbt"), BACKPACK_UPGRADE);
+  }
 }

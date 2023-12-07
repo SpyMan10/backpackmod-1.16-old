@@ -20,48 +20,48 @@ import org.slf4j.LoggerFactory;
 
 public final class BackpackMod implements ModInitializer {
 
-    public static final String NAME = "BackpackMod";
-    public static final String MODID = NAME.toLowerCase();
+  public static final String NAME = "BackpackMod";
+  public static final String MODID = NAME.toLowerCase();
 
-    public static final ItemGroup GROUP = FabricItemGroupBuilder.create(identify("group")).icon(() -> new ItemStack(Items.APPLE)).build();
+  public static final ItemGroup GROUP = FabricItemGroupBuilder.create(identify("group")).icon(() -> new ItemStack(Items.APPLE)).build();
 
-    public static final Identifier PACKET_RENAME_BACKPACK = identify("packet_rename_backpack");
+  public static final Identifier PACKET_RENAME_BACKPACK = identify("packet_rename_backpack");
 
-    public static final Logger LOGGER = LoggerFactory.getLogger(NAME);
+  public static final Logger LOGGER = LoggerFactory.getLogger(NAME);
 
-    @Override
-    public void onInitialize() {
-        // initialize / load configuration file
-        BackpackCfgFile.instance().init();
-        BackpackCfgFile.instance().load();
+  public static final MutableText translate(String key, Object... params) {
+    return Text.translatable(MODID + "." + key, params);
+  }
 
-        BackpackItems.register();
-        BackpackRecipes.register();
-        BackpackScreenHandlers.register();
+  public static final Identifier identify(String name) {
+    return new Identifier(MODID, name);
+  }
 
-        // Backpack custom name packet
-        // [CustomName(Client)] ==> [ItemStack(Server)]
-        ServerPlayNetworking.registerGlobalReceiver(PACKET_RENAME_BACKPACK, (server, player, handler, buf, responseSender) -> {
-            final boolean def = buf.readBoolean();
-            final Hand hand = buf.readEnumConstant(Hand.class);
-            final ItemStack stack = player.getStackInHand(hand);
+  @Override
+  public void onInitialize() {
+    // initialize / load configuration file
+    BackpackCfgFile.instance().init();
+    BackpackCfgFile.instance().load();
 
-            if (!stack.isEmpty() && stack.getItem() instanceof BackpackItem) {
-                if (def) {
-                    stack.removeCustomName();
-                } else {
-                    final String name = buf.readString(32);
-                    stack.setCustomName(Text.of(name));
-                }
-            }
-        });
-    }
+    BackpackItems.register();
+    BackpackRecipes.register();
+    BackpackScreenHandlers.register();
 
-    public static final MutableText translate(String key, Object... params) {
-        return Text.translatable(MODID + "." + key, params);
-    }
+    // Backpack custom name packet
+    // [CustomName(Client)] ==> [ItemStack(Server)]
+    ServerPlayNetworking.registerGlobalReceiver(PACKET_RENAME_BACKPACK, (server, player, handler, buf, responseSender) -> {
+      final boolean def = buf.readBoolean();
+      final Hand hand = buf.readEnumConstant(Hand.class);
+      final ItemStack stack = player.getStackInHand(hand);
 
-    public static final Identifier identify(String name) {
-        return new Identifier(MODID, name);
-    }
+      if (!stack.isEmpty() && stack.getItem() instanceof BackpackItem) {
+        if (def) {
+          stack.removeCustomName();
+        } else {
+          final String name = buf.readString(32);
+          stack.setCustomName(Text.of(name));
+        }
+      }
+    });
+  }
 }

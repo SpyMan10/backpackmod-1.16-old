@@ -1,28 +1,21 @@
 {
-    "itemGroup.backpackmod.group": "Backpack Mod",
-
-    "item.backpackmod.leather_backpack": "Leather Backpack",
-    "item.backpackmod.copper_backpack": "Copper Backpack",
-    "item.backpackmod.iron_backpack": "Iron Backpack",
-    "item.backpackmod.amethyst_backpack": "Amethyst Backpack",
-    "item.backpackmod.gold_backpack": "Gold Backpack",
-    "item.backpackmod.diamond_backpack": "Diamond Backpack",
-    "item.backpackmod.netherite_backpack": "Netherite Backpack",
-
-    "item.backpackmod.ender_backpack": "Ender Backpack",
-
-    "backpackmod.tooltip.size": "Size: %sx%s (%s) slots",
-
-    "backpackmod.screen.title.rename": "Rename Backpack",
-    "backpackmod.screen.button.default.name": "Reset name",
-    "backpackmod.screen.button.rename": "Rename",
-    "backpackmod.screen.rename.max.length": "Max length : %s",
-    "backpackmod.tooltip.how.to.rename": "Sneak + Right click to rename",
-
-    "backpackmod.tooltip.fireproof": "Fire proof (like netherite items)",
-
-    "backpackmod.screen.button.close": "Close",
-
-    "category.backpackmod.backpack": "BackpackMod",
-    "key.backpackmod.open": "Open Backpack"
+  "itemGroup.backpackmod.group": "Backpack Mod",
+  "item.backpackmod.leather_backpack": "Leather Backpack",
+  "item.backpackmod.copper_backpack": "Copper Backpack",
+  "item.backpackmod.iron_backpack": "Iron Backpack",
+  "item.backpackmod.amethyst_backpack": "Amethyst Backpack",
+  "item.backpackmod.gold_backpack": "Gold Backpack",
+  "item.backpackmod.diamond_backpack": "Diamond Backpack",
+  "item.backpackmod.netherite_backpack": "Netherite Backpack",
+  "item.backpackmod.ender_backpack": "Ender Backpack",
+  "backpackmod.tooltip.size": "Size: %sx%s (%s) slots",
+  "backpackmod.screen.title.rename": "Rename Backpack",
+  "backpackmod.screen.button.default.name": "Reset name",
+  "backpackmod.screen.button.rename": "Rename",
+  "backpackmod.screen.rename.max.length": "Max length : %s",
+  "backpackmod.tooltip.how.to.rename": "Sneak + Right click to rename",
+  "backpackmod.tooltip.fireproof": "Fire proof (like netherite items)",
+  "backpackmod.screen.button.close": "Close",
+  "category.backpackmod.backpack": "BackpackMod",
+  "key.backpackmod.open": "Open Backpack"
 }

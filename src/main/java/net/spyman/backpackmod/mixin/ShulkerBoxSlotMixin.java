@@ -11,11 +11,11 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(ShulkerBoxSlot.class)
 public class ShulkerBoxSlotMixin {
 
-    /**
-     * Prevent for storing backpacks into shulkerbox
-     */
-    @Inject(method = "canInsert", at = @At("TAIL"))
-    public boolean canInsert(ItemStack stack, CallbackInfoReturnable<Boolean> info) {
-        return !(stack.getItem() instanceof BackpackItem) && stack.getItem().canBeNested();
-    }
+  /**
+   * Prevent for storing backpacks into shulkerbox
+   */
+  @Inject(method = "canInsert", at = @At("TAIL"))
+  public boolean canInsert(ItemStack stack, CallbackInfoReturnable<Boolean> info) {
+    return !(stack.getItem() instanceof BackpackItem) && stack.getItem().canBeNested();
+  }
 }

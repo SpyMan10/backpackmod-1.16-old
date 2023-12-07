@@ -1,20 +1,20 @@
 {
-    "type": "minecraft:crafting_shaped",
-    "group": "backpackmod",
-    "pattern": [
-        "###",
-        "#C#",
-        "###"
-    ],
-    "key": {
-        "#": {
-            "item": "minecraft:leather"
-        },
-        "C": {
-            "item": "minecraft:ender_chest"
-        }
+  "type": "minecraft:crafting_shaped",
+  "group": "backpackmod",
+  "pattern": [
+    "###",
+    "#C#",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:leather"
     },
-    "result": {
-        "item": "backpackmod:ender_backpack"
+    "C": {
+      "item": "minecraft:ender_chest"
     }
+  },
+  "result": {
+    "item": "backpackmod:ender_backpack"
+  }
 }

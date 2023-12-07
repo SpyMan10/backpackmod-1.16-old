@@ -1,24 +1,24 @@
 {
-    "type": "backpackmod:shaped_copy_nbt",
-    "group": "backpackmod",
-    "pattern": [
-        "###",
-        "CBC",
-        "###"
-    ],
-    "key": {
-        "#": {
-            "item": "minecraft:iron_ingot"
-        },
-        "B": {
-            "item": "backpackmod:leather_backpack"
-        },
-        "C": {
-            "item": "minecraft:chest"
-        }
+  "type": "backpackmod:shaped_copy_nbt",
+  "group": "backpackmod",
+  "pattern": [
+    "###",
+    "CBC",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:iron_ingot"
     },
-    "result": {
-        "item": "backpackmod:iron_backpack"
+    "B": {
+      "item": "backpackmod:leather_backpack"
     },
-    "target_slot": 4
+    "C": {
+      "item": "minecraft:chest"
+    }
+  },
+  "result": {
+    "item": "backpackmod:iron_backpack"
+  },
+  "target_slot": 4
 }

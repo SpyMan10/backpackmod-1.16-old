@@ -9,24 +9,24 @@ import net.spyman.backpackmod.common.item.BackpackItem;
 
 public class BackpackSlot extends Slot {
 
-    public BackpackSlot(Inventory inventory, int index, int x, int y) {
-        super(inventory, index, x, y);
+  public BackpackSlot(Inventory inventory, int index, int x, int y) {
+    super(inventory, index, x, y);
+  }
+
+  public static boolean checkCanInsert(ItemStack stack) {
+    if (stack.getItem() instanceof BackpackItem) {
+      return false;
     }
 
-    @Override
-    public boolean canInsert(ItemStack stack) {
-        return checkCanInsert(stack);
+    if (stack.getItem() instanceof final BlockItem itemb) {
+      return !(itemb.getBlock() instanceof ShulkerBoxBlock);
     }
 
-    public static boolean checkCanInsert(ItemStack stack) {
-        if (stack.getItem() instanceof BackpackItem) {
-            return false;
-        }
+    return true;
+  }
 
-        if (stack.getItem() instanceof final BlockItem itemb) {
-            return !(itemb.getBlock() instanceof ShulkerBoxBlock);
-        }
-
-        return true;
-    }
+  @Override
+  public boolean canInsert(ItemStack stack) {
+    return checkCanInsert(stack);
+  }
 }
